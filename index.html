@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Оперитив — оперный проект студентов ГИТИС при МАМТ</title>
+  <meta name="description" content="«Оперитив» — оперный проект студентов ГИТИС при МАМТ: лекции, встречи с артистами и разговоры за кулисами. Ищем путь к опере вместе со зрителем.">
+  <meta name="theme-color" content="#dbe6f5">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Оперитив — ищем путь к опере вместе со зрителем">
+  <meta property="og:description" content="Лекции, встречи с артистами и разговоры за кулисами. Проект студентов ГИТИС при МАМТ.">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='28' fill='%236b1421'/%3E%3Cpath fill='%23dbe6f5' d='M50 14 L56 44 L86 50 L56 56 L50 86 L44 56 L14 50 L44 44Z'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Фирменные цвета (по референсам) */
+      --ink: #1d1b33;          /* глубокий чернильный — основной текст */
+      --ink-soft: #4b4968;
+      --blue: #a3bddf;         /* небесно-голубой — кнопки, карточки */
+      --blue-deep: #6f92c3;
+      --blue-pale: #dde7f6;
+      --wine: #6b1421;         /* бордо из ткани */
+      --wine-deep: #470b15;
+      --green: #5cc23f;        /* яркий зелёный — точечный акцент */
+      --lilac: #e4d8f7;
+      --pink: #f6d2ea;
+      --peach: #ffae86;
+      --gold: #e6c46a;
+      --paper: #f8f7fc;
+      --white: #ffffff;
+
+      --radius-lg: 32px;
+      --radius-md: 22px;
+      --gutter: 16px;
+      --max: 1120px;
+
+      --f-head: "Oswald", "Arial Narrow", sans-serif;
+      --f-script: "Great Vibes", cursive;
+      --f-text: "Fira Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    @media (min-width: 720px) { :root { --gutter: 32px; } }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      margin: 0;
+      font-family: var(--f-text);
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--paper);
+      overflow-x: hidden;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Мягкий пастельный фон-«дымка», как на референсе */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20vmax;
+      z-index: -2;
+      background:
+        radial-gradient(40vmax 34vmax at 12% 8%, var(--pink) 0%, transparent 60%),
+        radial-gradient(42vmax 36vmax at 92% 22%, var(--lilac) 0%, transparent 62%),
+        radial-gradient(46vmax 40vmax at 20% 70%, var(--blue-pale) 0%, transparent 60%),
+        radial-gradient(40vmax 36vmax at 85% 92%, #d9d3fb 0%, transparent 60%),
+        var(--paper);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--blue-deep); outline-offset: 3px; border-radius: 8px; }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ---------- Типографика ---------- */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--ink-soft);
+      margin: 0 0 14px;
+    }
+    .eyebrow::before {
+      content: ""; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--green); box-shadow: 0 0 0 4px rgba(92,194,63,.18);
+    }
+    h1, h2, h3 {
+      font-family: var(--f-head);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: .98;
+      letter-spacing: .005em;
+      margin: 0;
+    }
+    h2 { font-size: clamp(38px, 8.4vw, 72px); }
+    h3 { font-size: clamp(22px, 4.6vw, 28px); line-height: 1.05; }
+    .script {
+      font-family: var(--f-script);
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 1.32em;
+      line-height: .7;
+      color: var(--wine);
+      display: inline-block;
+      padding: 0 .06em;
+      transform: translateY(.04em);
+    }
+    .lead { font-size: clamp(16px, 2.4vw, 19px); color: var(--ink-soft); max-width: 36em; }
+    .small { font-size: 14px; color: var(--ink-soft); }
+
+    /* ---------- Кнопки ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 14px 28px;
+      border-radius: 999px; border: 0;
+      font: 500 16px/1 var(--f-text);
+      text-decoration: none; cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn::after { content: "→"; transition: transform .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:hover::after { transform: translateX(4px); }
+    .btn--blue { background: var(--blue-deep); color: var(--white); box-shadow: 0 10px 30px -12px rgba(111,146,195,.9); }
+    .btn--blue:hover { background: #5a7db1; }
+    .btn--white { background: rgba(255,255,255,.88); color: var(--ink); box-shadow: 0 10px 30px -18px rgba(29,27,51,.45); }
+    .btn--wine { background: var(--wine); color: var(--white); }
+    .btn--wine:hover { background: var(--wine-deep); }
+    .btn--block { width: 100%; }
+
+    /* ---------- Шапка ---------- */
+    .top {
+      position: sticky; top: 0; z-index: 50;
+      padding: 12px 0;
+    }
+    .top__bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 8px 8px 8px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.66);
+      -webkit-backdrop-filter: blur(16px) saturate(1.3);
+      backdrop-filter: blur(16px) saturate(1.3);
+      box-shadow: 0 8px 30px -18px rgba(29,27,51,.35);
+    }
+    .logo {
+      font-family: var(--f-head); font-weight: 700; font-size: 20px;
+      text-transform: uppercase; letter-spacing: .06em; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .logo svg { width: 18px; height: 18px; color: var(--wine); }
+    .nav { display: flex; align-items: center; gap: 4px; }
+    .nav a {
+      text-decoration: none; font-size: 15px; font-weight: 500;
+      padding: 10px 14px; border-radius: 999px; color: var(--ink-soft);
+      transition: background-color .2s, color .2s;
+    }
+    .nav a:hover { background: var(--blue-pale); color: var(--ink); }
+    .top .btn { min-height: 44px; padding: 10px 20px; font-size: 15px; }
+    .burger {
+      display: none; width: 44px; height: 44px; border: 0; border-radius: 50%;
+      background: var(--blue-deep); color: var(--white); cursor: pointer;
+      align-items: center; justify-content: center;
+    }
+    .burger span, .burger span::before, .burger span::after {
+      content: ""; display: block; width: 18px; height: 2px; border-radius: 2px; background: currentColor;
+      position: relative; transition: transform .25s ease, background-color .25s;
+    }
+    .burger span::before { position: absolute; top: -6px; }
+    .burger span::after { position: absolute; top: 6px; }
+    .top.is-open .burger span { background: transparent; }
+    .top.is-open .burger span::before { transform: translateY(6px) rotate(45deg); }
+    .top.is-open .burger span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    @media (max-width: 859px) {
+      .burger { display: inline-flex; }
+      .top .btn--cta { display: none; }
+      .nav {
+        position: absolute; left: var(--gutter); right: var(--gutter); top: calc(100% - 2px);
+        flex-direction: column; align-items: stretch; gap: 2px;
+        padding: 10px; border-radius: var(--radius-md);
+        background: rgba(255,255,255,.94);
+        -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+        box-shadow: 0 20px 40px -20px rgba(29,27,51,.4);
+        opacity: 0; transform: translateY(-8px); pointer-events: none; visibility: hidden;
+        transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      }
+      .nav a { padding: 14px 16px; font-size: 17px; color: var(--ink); }
+      .nav .btn { margin-top: 6px; }
+      .top.is-open .nav { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+    }
+    @media (min-width: 860px) { .nav .btn { display: none; } }
+
+    /* ---------- Декор ---------- */
+    .deco { position: absolute; pointer-events: none; z-index: 0; }
+    .float { animation: float 7s ease-in-out infinite; }
+    .float--slow { animation-duration: 10s; animation-delay: -3s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+      50% { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 8deg)); }
+    }
+    @media (prefers-reduced-motion: reduce) { .float { animation: none; } }
+
+    .rings { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .rings i {
+      position: absolute; left: 50%; top: 50%; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.7);
+      transform: translate(-50%, -50%);
+    }
+    .rings--ink i { border-color: rgba(29,27,51,.08); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      padding: 40px 0 72px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero__inner { position: relative; z-index: 1; }
+    .hero__orb {
+      position: absolute; left: 50%; top: 40%;
+      width: min(130vw, 860px); aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      background:
+        radial-gradient(closest-side at 50% 52%, rgba(255,146,100,.95) 0%, rgba(255,170,130,.85) 24%, rgba(240,170,215,.75) 46%, rgba(130,164,214,.6) 68%, rgba(163,189,223,.25) 86%, transparent 100%);
+      filter: blur(28px);
+      border-radius: 50%;
+      animation: breathe 9s ease-in-out infinite;
+    }
+    @keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-52%) scale(1.06); } }
+    @media (prefers-reduced-motion: reduce) { .hero__orb { animation: none; } }
+
+    .hero .eyebrow { justify-content: center; color: var(--ink); }
+    .hero h1 {
+      font-size: clamp(64px, 19vw, 200px);
+      line-height: .9;
+      letter-spacing: .01em;
+      color: var(--white);
+      text-shadow: 0 6px 30px rgba(71,11,21,.22), 0 1px 2px rgba(29,27,51,.12);
+      margin: 18px 0 0;
+    }
+    .hero__slogan {
+      margin: 18px auto 0;
+      font-family: var(--f-head); font-weight: 500; text-transform: uppercase;
+      font-size: clamp(22px, 5.4vw, 44px); line-height: 1.05;
+      color: var(--ink);
+      max-width: 14em;
+    }
+    .hero__slogan .script { font-size: 1.7em; color: var(--wine); line-height: .8; }
+    .hero__text { margin: 26px auto 0; max-width: 34em; color: var(--ink); }
+    .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+    .hero__actions .btn { min-width: 230px; }
+    @media (max-width: 480px) { .hero__actions .btn { width: 100%; } }
+
+    .hero__pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 34px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      background: rgba(255,255,255,.7); color: var(--ink);
+      font-size: 14px; font-weight: 500; white-space: nowrap;
+    }
+    .pill svg { width: 12px; height: 12px; color: var(--wine); }
+    .pill--blue { background: var(--blue); color: var(--white); }
+    .pill--blue svg { color: var(--white); }
+
+    /* ---------- Бегущая строка ---------- */
+    .ticker-wrap { overflow: hidden; padding: 24px 0; margin: -24px 0; }
+    .ticker {
+      position: relative; overflow: hidden;
+      background: var(--wine); color: var(--blue-pale);
+      padding: 14px 0;
+      transform: rotate(-1.5deg); margin: 0 -10px;
+      box-shadow: 0 20px 40px -24px rgba(71,11,21,.7);
+    }
+    .ticker__track { display: flex; width: max-content; animation: ticker 32s linear infinite; }
+    .ticker__item {
+      display: inline-flex; align-items: center; gap: 22px; padding-right: 22px;
+      font-family: var(--f-head); font-weight: 500; text-transform: uppercase;
+      font-size: 20px; letter-spacing: .06em; white-space: nowrap;
+    }
+    .ticker__item .script { color: var(--white); font-size: 34px; line-height: 1; transform: none; }
+    .ticker__item svg { width: 16px; height: 16px; color: var(--blue); flex: none; }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { .ticker__track { animation: none; } }
+
+    /* ---------- Секции ---------- */
+    section { position: relative; }
+    .section { padding: 96px 0; }
+    @media (max-width: 719px) { .section { padding: 72px 0; } }
+    .section__head { position: relative; z-index: 1; margin-bottom: 40px; }
+    .section__head--center { text-align: center; }
+    .section__head--center .eyebrow { justify-content: center; }
+    .section__head--center .lead { margin-left: auto; margin-right: auto; }
+    .section__head .lead { margin-top: 18px; }
+
+    /* О проекте */
+    .about__grid { display: grid; gap: 40px; align-items: center; position: relative; z-index: 1; }
+    @media (min-width: 900px) { .about__grid { grid-template-columns: 1.05fr .95fr; gap: 64px; } }
+    .about__text p { margin: 0 0 16px; color: var(--ink-soft); }
+    .about__text p:first-of-type { color: var(--ink); font-size: clamp(17px, 2.4vw, 20px); }
+    .about__media { position: relative; padding: 0 0 36px 36px; }
+    .about__pattern {
+      position: absolute; left: 0; bottom: 0; width: 62%; aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      background: url("assets/pattern.jpg") center/cover;
+      transform: rotate(-6deg);
+      box-shadow: 0 30px 60px -30px rgba(71,11,21,.55);
+    }
+    .about__photo {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      aspect-ratio: 4 / 3.3;
+      box-shadow: 0 30px 70px -30px rgba(29,27,51,.55);
+    }
+    .about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% center; }
+    .about__photo figcaption {
+      position: absolute; left: 14px; bottom: 14px;
+    }
+    .about__media .deco { right: -14px; top: -26px; width: 78px; --r: 12deg; }
+    @media (max-width: 719px) { .about__media .deco { right: 4px; width: 60px; } }
+
+    .formats { display: grid; gap: 14px; margin-top: 56px; position: relative; z-index: 1; }
+    @media (min-width: 760px) { .formats { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+    .card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.78);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      padding: 28px 24px;
+      box-shadow: 0 20px 50px -34px rgba(29,27,51,.5);
+    }
+    .format__num {
+      font-family: var(--f-head); font-weight: 700; font-size: 15px;
+      color: var(--blue-deep); letter-spacing: .1em;
+    }
+    .format h3 { margin: 14px 0 12px; }
+    .format p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+    .format__icon {
+      position: absolute; right: 22px; top: 22px; width: 46px; height: 46px; border-radius: 50%;
+      display: grid; place-items: center; background: var(--blue-pale); color: var(--wine);
+    }
+    .format__icon svg { width: 22px; height: 22px; }
+    .format--accent { background: var(--blue); color: var(--ink); }
+    .format--accent .format__num { color: var(--wine); }
+    .format--accent p { color: var(--ink); }
+    .format--accent .format__icon { background: rgba(255,255,255,.55); color: var(--wine); }
+
+    /* Круг «путь к опере» */
+    .path { padding-top: 24px; }
+    .path__circle {
+      position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto;
+    }
+    .path__ring {
+      position: absolute; inset: 14%;
+      border-radius: 50%; border: 1.5px solid rgba(111,146,195,.55);
+    }
+    .path__center {
+      position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+      font-family: var(--f-script); color: var(--wine);
+      font-size: clamp(40px, 10vw, 64px); line-height: .95;
+    }
+    .path__center small {
+      display: block; font-family: var(--f-text); font-size: 13px; color: var(--ink-soft);
+      letter-spacing: .08em; text-transform: uppercase; margin-top: 10px;
+    }
+    .path__step {
+      position: absolute; transform: translate(-50%, -50%);
+      font-size: clamp(13px, 3.4vw, 16px);
+      padding: 8px 14px;
+      background: var(--blue); color: var(--ink);
+      box-shadow: 0 10px 24px -14px rgba(111,146,195,1);
+    }
+    .path__step:nth-child(odd) { background: var(--white); color: var(--ink); box-shadow: 0 10px 24px -16px rgba(29,27,51,.5); }
+    .path__arrow { position: absolute; width: 28px; left: 24%; top: 21%; color: var(--blue-deep); transform: rotate(-30deg); }
+    .path__note { text-align: center; max-width: 30em; margin: 24px auto 0; }
+
+    /* Афиша */
+    .events__list { display: grid; gap: 18px; position: relative; z-index: 1; }
+    @media (min-width: 900px) { .events__list { grid-template-columns: repeat(3, 1fr); } }
+    .event {
+      display: flex; flex-direction: column; gap: 14px;
+      border-radius: var(--radius-lg); padding: 26px 24px 24px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 24px 50px -34px rgba(29,27,51,.55);
+      position: relative; overflow: hidden;
+    }
+    .event--blue { background: var(--blue); color: var(--ink); }
+    .event--wine { background: var(--wine); color: var(--white); }
+    .event__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .event__date { display: flex; align-items: flex-end; gap: 10px; }
+    .event__date b { font-family: var(--f-head); font-size: 64px; line-height: .8; font-weight: 700; }
+    .event__date span { font-size: 14px; line-height: 1.3; opacity: .85; padding-bottom: 2px; }
+    .event .pill { font-size: 13px; padding: 6px 12px; }
+    .event--blue .pill { background: rgba(255,255,255,.6); color: var(--ink); }
+    .event--wine .pill { background: rgba(255,255,255,.18); color: var(--white); }
+    .event--wine .pill svg { color: var(--white); }
+    .event--blue h3 .script { color: var(--wine); }
+    .event--blue li svg { color: var(--wine); }
+    .event h3 { margin-top: 8px; }
+    .event h3 .script { font-size: 1.45em; color: inherit; }
+    .event--light h3 .script { color: var(--wine); }
+    .event p { margin: 0; font-size: 15px; opacity: .9; }
+    .event ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; font-size: 14px; }
+    .event li { display: flex; gap: 8px; align-items: baseline; opacity: .92; }
+    .event li svg { width: 10px; height: 10px; flex: none; transform: translateY(1px); }
+    .event .btn { margin-top: auto; }
+    .event--blue .btn { background: var(--white); color: var(--ink); }
+    .event--blue .event__deco { color: var(--white); opacity: .35; }
+    .event--wine .btn { background: var(--blue-pale); color: var(--ink); }
+    .event__deco { position: absolute; right: -30px; bottom: -30px; width: 140px; opacity: .18; pointer-events: none; }
+
+    .notice {
+      display: grid; gap: 18px; align-items: center;
+      margin-top: 18px; position: relative; z-index: 1;
+    }
+    @media (min-width: 760px) { .notice { grid-template-columns: auto 1fr auto; gap: 24px; } }
+    .notice > svg { width: 30px; height: 30px; color: var(--ink); }
+    .notice p { margin: 0; font-weight: 500; }
+    .notice p span { display: block; font-weight: 400; color: var(--ink-soft); font-size: 14px; margin-top: 4px; }
+
+    /* Как попасть */
+    .steps { display: grid; gap: 14px; position: relative; z-index: 1; counter-reset: step; }
+    @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+    .step { padding-top: 76px; }
+    .step::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; left: 24px; top: 22px;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-family: var(--f-head); font-weight: 700; font-size: 18px;
+      background: var(--wine); color: var(--white);
+    }
+    .step h3 { margin-bottom: 10px; font-size: 22px; }
+    .step p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+    .venue { display: grid; gap: 18px; margin-top: 18px; position: relative; z-index: 1; }
+    @media (min-width: 900px) { .venue { grid-template-columns: 1.1fr .9fr; } }
+    .venue__card { background: var(--blue); color: var(--ink); padding: 30px 26px; overflow: hidden; }
+    .venue__card li svg { color: var(--wine); }
+    .venue__card h3 { font-size: clamp(23px, 5vw, 36px); margin: 4px 0 14px; }
+    .nowrap { white-space: nowrap; }
+    .venue__card .eyebrow { color: var(--ink); }
+    .venue__card ul { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 8px; font-size: 15px; }
+    .venue__card li { display: flex; gap: 10px; align-items: baseline; }
+    .venue__card li svg { width: 11px; height: 11px; flex: none; }
+    .venue__card .btn { background: var(--white); color: var(--ink); }
+    .venue__card .rings i { border-color: rgba(255,255,255,.55); }
+    .venue__card > *:not(.rings) { position: relative; z-index: 1; }
+
+    .faq { padding: 12px 22px; }
+    .faq h3 { font-size: 20px; padding: 16px 0 6px; }
+    .faq details { border-top: 1px solid rgba(29,27,51,.08); }
+    .faq details:first-of-type { border-top: 0; }
+    .faq summary {
+      list-style: none; cursor: pointer; padding: 16px 36px 16px 0; position: relative;
+      font-weight: 500;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--blue-pale);
+      display: grid; place-items: center; font-size: 18px; line-height: 1; color: var(--ink);
+      transition: transform .2s;
+    }
+    .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq details p { margin: 0 0 16px; color: var(--ink-soft); font-size: 15px; }
+
+    /* Финальный призыв */
+    .finale { padding: 40px 0 96px; text-align: center; overflow: hidden; }
+    .finale__inner {
+      position: relative; z-index: 1;
+      max-width: 640px; margin: 0 auto;
+      padding: 40px 0;
+    }
+    .finale h2 { font-size: clamp(36px, 8vw, 64px); }
+    .finale h2 .script { display: block; font-size: 1.5em; line-height: 1; margin-top: 4px; }
+    .finale p { margin: 22px auto 30px; max-width: 26em; color: var(--ink-soft); }
+    .finale .deco--gold { right: 4%; top: 28%; width: 54px; --r: -10deg; }
+    .finale .deco--blue { left: 2%; bottom: 14%; width: 70px; --r: 14deg; }
+    @media (max-width: 719px) { .finale .deco--gold { top: auto; bottom: 26%; right: 4%; width: 36px; } .finale .deco--blue { bottom: 4%; left: 6%; width: 52px; } }
+
+    /* Контакты */
+    .contacts__panel {
+      position: relative; overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--wine); color: var(--white);
+      padding: 44px 24px 28px;
+      box-shadow: 0 40px 80px -40px rgba(71,11,21,.8);
+    }
+    @media (min-width: 720px) { .contacts__panel { padding: 64px 56px 48px; } }
+    .contacts__panel::before {
+      content: ""; position: absolute; right: -60px; top: -60px;
+      width: min(70vw, 420px); aspect-ratio: 1; border-radius: 50%;
+      background: url("assets/pattern.jpg") center/cover;
+      opacity: .9;
+      -webkit-mask: radial-gradient(closest-side, #000 62%, transparent 100%);
+      mask: radial-gradient(closest-side, #000 62%, transparent 100%);
+    }
+    @media (max-width: 719px) { .contacts__panel::before { right: -110px; top: -110px; width: 280px; opacity: .55; } }
+    .contacts__panel > * { position: relative; z-index: 1; }
+    .contacts__panel .eyebrow { color: var(--blue-pale); }
+    .contacts__panel h2 { max-width: 9em; }
+    .contacts__panel h2 .script { color: var(--blue); }
+    .contacts__panel .lead { color: rgba(255,255,255,.82); margin-top: 18px; }
+    .contacts__grid { display: grid; gap: 12px; margin-top: 36px; }
+    @media (min-width: 720px) { .contacts__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .contacts__grid { grid-template-columns: repeat(4, 1fr); } }
+    .contact {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 20px 20px 18px; border-radius: var(--radius-md);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.14);
+      text-decoration: none;
+      transition: background-color .2s, transform .2s;
+      min-height: 112px;
+    }
+    a.contact:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+    .contact__label { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); font-weight: 500; }
+    .contact__value { font-family: var(--f-head); font-weight: 500; font-size: 22px; line-height: 1.15; word-break: break-word; }
+    .contact__hint { font-size: 13px; color: rgba(255,255,255,.7); margin-top: auto; }
+
+    /* Подвал */
+    .footer { padding: 36px 0 calc(36px + env(safe-area-inset-bottom)); }
+    .footer__row {
+      display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--ink-soft);
+    }
+    .footer .logo { font-size: 16px; color: var(--ink); }
+
+    /* Появление при прокрутке (только если JS работает) */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Набор SVG-иконок -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-spark" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M50 0 L57 43 L100 50 L57 57 L50 100 L43 57 L0 50 L43 43Z"/>
+        <path fill="currentColor" d="M50 18 L55 45 L82 50 L55 55 L50 82 L45 55 L18 50 L45 45Z" transform="rotate(45 50 50)"/>
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 100 100">
+        <polygon points="50,8 62,38 95,39 69,59 78,91 50,73 22,91 31,59 5,39 38,38" fill="currentColor" stroke="currentColor" stroke-width="9" stroke-linejoin="round"/>
+      </symbol>
+      <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e9f3ff"/>
+        <stop offset=".35" stop-color="#9fc2f2"/>
+        <stop offset=".7" stop-color="#5f8fd6"/>
+        <stop offset="1" stop-color="#c9b8f5"/>
+      </linearGradient>
+      <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f6dd93"/>
+        <stop offset="1" stop-color="#d9ad48"/>
+      </linearGradient>
+      <symbol id="i-glass-star" viewBox="0 0 100 100">
+        <polygon points="50,8 62,38 95,39 69,59 78,91 50,73 22,91 31,59 5,39 38,38" fill="url(#g-glass)" stroke="url(#g-glass)" stroke-width="10" stroke-linejoin="round"/>
+        <path d="M34 34 Q44 22 52 20" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".85"/>
+        <circle cx="62" cy="58" r="5" fill="#fff" opacity=".55"/>
+      </symbol>
+      <symbol id="i-gold-star" viewBox="0 0 100 100">
+        <polygon points="50,8 62,38 95,39 69,59 78,91 50,73 22,91 31,59 5,39 38,38" fill="url(#g-gold)" stroke="url(#g-gold)" stroke-width="10" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></g></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></g></symbol>
+      <symbol id="i-curtain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M4 3v18M20 3v18"/><path d="M4 3c0 6 3 10 7 11M20 3c0 6-3 10-7 11"/></g></symbol>
+    </defs>
+  </svg>
+
+  <!-- ШАПКА -->
+  <header class="top" id="top">
+    <div class="wrap" style="position:relative">
+      <div class="top__bar">
+        <a class="logo" href="#hero" aria-label="Оперитив — на главную">
+          <svg aria-hidden="true"><use href="#i-spark"/></svg>Оперитив
+        </a>
+        <nav class="nav" id="nav" aria-label="Разделы">
+          <a href="#about">О проекте</a>
+          <a href="#events">Встречи</a>
+          <a href="#how">Как попасть</a>
+          <a href="#contacts">Контакты</a>
+          <a class="btn btn--blue" href="#events">Записаться</a>
+        </nav>
+        <a class="btn btn--blue btn--cta" href="#events">Записаться</a>
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ПЕРВЫЙ ЭКРАН -->
+    <section class="hero" id="hero">
+      <div class="hero__orb" aria-hidden="true"></div>
+      <div class="rings" aria-hidden="true">
+        <i style="width:min(96vw,640px);height:min(96vw,640px)"></i>
+        <i style="width:min(140vw,900px);height:min(140vw,900px)"></i>
+      </div>
+      <svg class="deco float" style="left:6%;top:16%;width:clamp(48px,10vw,92px);--r:-14deg" aria-hidden="true"><use href="#i-glass-star"/></svg>
+      <svg class="deco float float--slow" style="right:8%;top:58%;width:clamp(30px,6vw,52px);--r:10deg" aria-hidden="true"><use href="#i-gold-star"/></svg>
+      <svg class="deco" style="right:16%;top:14%;width:22px;color:var(--wine)" aria-hidden="true"><use href="#i-spark"/></svg>
+
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Оперный проект студентов ГИТИС при МАМТ</p>
+        <h1>Оперитив</h1>
+        <p class="hero__slogan">Ищем путь к опере<br><span class="script">вместе</span> со зрителем</p>
+        <p class="hero__text">Лекции, встречи с&nbsp;артистами и&nbsp;разговоры за&nbsp;кулисами&nbsp;— для&nbsp;тех, кто давно хотел понять оперу, но&nbsp;не&nbsp;знал, с&nbsp;чего начать.</p>
+        <div class="hero__actions">
+          <a class="btn btn--blue" href="#events">Ближайшие встречи</a>
+          <a class="btn btn--white" href="#about">О проекте</a>
+        </div>
+        <div class="hero__pills" aria-label="Форматы">
+          <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>лекции</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>встречи с артистами</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>разговоры за кулисами</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЕГУЩАЯ СТРОКА -->
+    <div class="ticker-wrap" aria-hidden="true"><div class="ticker">
+      <div class="ticker__track">
+        <div class="ticker__item">
+          <span>лекции</span><svg><use href="#i-spark"/></svg>
+          <span>встречи с артистами</span><svg><use href="#i-spark"/></svg>
+          <span>разговоры за кулисами</span><svg><use href="#i-spark"/></svg>
+          <span class="script">Оперитив</span><svg><use href="#i-spark"/></svg>
+        </div>
+        <div class="ticker__item">
+          <span>лекции</span><svg><use href="#i-spark"/></svg>
+          <span>встречи с артистами</span><svg><use href="#i-spark"/></svg>
+          <span>разговоры за кулисами</span><svg><use href="#i-spark"/></svg>
+          <span class="script">Оперитив</span><svg><use href="#i-spark"/></svg>
+        </div>
+      </div>
+    </div></div>
+
+    <!-- О ПРОЕКТЕ -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p class="eyebrow">О проекте</p>
+            <h2>Опера <span class="script">ближе,</span> чем&nbsp;кажется</h2>
+            <div style="height:28px"></div>
+            <!-- ЗАГЛУШКА: текст о проекте — заменить -->
+            <p>«Оперитив»&nbsp;— проект студентов ГИТИС, который живёт на&nbsp;сцене и&nbsp;за&nbsp;кулисами МАМТ. Мы&nbsp;хотим, чтобы опера перестала быть «сложным искусством для&nbsp;своих».</p>
+            <p>Здесь можно задать любой вопрос&nbsp;— от&nbsp;«почему они поют на&nbsp;итальянском?» до&nbsp;«как певец не&nbsp;теряет голос к&nbsp;третьему акту?». Мы&nbsp;рассказываем, показываем и&nbsp;слушаем вместе с&nbsp;вами.</p>
+            <p class="small">[Заглушка: кто в&nbsp;команде, когда проект появился, кураторы и&nbsp;партнёры.]</p>
+          </div>
+
+          <div class="about__media reveal">
+            <div class="about__pattern" aria-hidden="true"></div>
+            <figure class="about__photo" style="margin:0">
+              <!-- ЗАГЛУШКА: заменить фото на снимок с встречи «Оперитива» -->
+              <img src="assets/audience.jpg" alt="Зрители рассматривают картину — атмосфера встречи" width="1280" height="853" loading="lazy">
+              <figcaption><span class="pill">Фото: [автор]</span></figcaption>
+            </figure>
+            <svg class="deco float" aria-hidden="true"><use href="#i-glass-star"/></svg>
+          </div>
+        </div>
+
+        <div class="formats">
+          <article class="card format reveal">
+            <span class="format__icon" aria-hidden="true"><svg><use href="#i-book"/></svg></span>
+            <span class="format__num">01</span>
+            <h3>Лекции</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Рассказываем об&nbsp;операх из&nbsp;репертуара МАМТ простым языком: сюжет, музыка, история постановки и&nbsp;на&nbsp;что обратить внимание в&nbsp;зале.</p>
+          </article>
+          <article class="card format format--accent reveal">
+            <span class="format__icon" aria-hidden="true"><svg><use href="#i-mic"/></svg></span>
+            <span class="format__num">02</span>
+            <h3>Встречи с&nbsp;артистами</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Солисты, хористы и&nbsp;музыканты театра рассказывают о&nbsp;профессии, ролях и&nbsp;о&nbsp;том, что происходит с&nbsp;человеком на&nbsp;сцене.</p>
+          </article>
+          <article class="card format reveal">
+            <span class="format__icon" aria-hidden="true"><svg><use href="#i-curtain"/></svg></span>
+            <span class="format__num">03</span>
+            <h3>Разговоры за&nbsp;кулисами</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Заглядываем туда, куда зрителя обычно не&nbsp;пускают: цеха, репетиции, гримёрки&nbsp;— и&nbsp;люди, без которых спектакль не&nbsp;случится.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПУТЬ К ОПЕРЕ -->
+    <section class="path" aria-labelledby="path-title">
+      <div class="wrap">
+        <div class="section__head section__head--center reveal">
+          <p class="eyebrow">Знакомо?</p>
+          <h2 id="path-title">Хочется в&nbsp;оперу, <br>но&nbsp;<span class="script">страшно</span> не&nbsp;понять</h2>
+        </div>
+        <div class="path__circle reveal">
+          <div class="rings rings--ink" aria-hidden="true">
+            <i style="width:100%;height:100%"></i>
+          </div>
+          <div class="path__ring" aria-hidden="true"></div>
+          <ol style="list-style:none;margin:0;padding:0" aria-label="Путь к опере">
+            <li class="pill path__step" style="left:50%;top:14%">интерес</li>
+            <li class="pill path__step" style="left:81%;top:32%">лекция</li>
+            <li class="pill path__step" style="left:81%;top:68%">вопрос артисту</li>
+            <li class="pill path__step" style="left:50%;top:86%">закулисье</li>
+            <li class="pill path__step" style="left:19%;top:68%">спектакль</li>
+            <li class="pill path__step" style="left:19%;top:32%">снова в&nbsp;театр</li>
+          </ol>
+          <div class="path__center" aria-hidden="true"><div>путь<br>к опере<small>проходим вместе</small></div></div>
+        </div>
+        <p class="path__note lead reveal">Не&nbsp;нужно ничего знать заранее. Мы&nbsp;проведём от&nbsp;первого любопытства до&nbsp;первого спектакля&nbsp;— и&nbsp;дальше.</p>
+      </div>
+    </section>
+
+    <!-- БЛИЖАЙШИЕ ВСТРЕЧИ -->
+    <section class="section" id="events">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow">Афиша</p>
+          <h2>Ближайшие <span class="script">встречи</span></h2>
+          <p class="lead">Даты и&nbsp;темы обновляем перед каждым сезоном. Количество мест ограничено&nbsp;— записывайтесь заранее.</p>
+        </div>
+
+        <div class="events__list">
+          <!-- ЗАГЛУШКА: встреча 1 — заменить дату, тему, описание и ссылку -->
+          <article class="event event--light reveal">
+            <div class="event__top">
+              <div class="event__date"><b>00</b><span>декабря<br>19:00</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>лекция</span>
+            </div>
+            <h3>Опера <span class="script">с нуля</span></h3>
+            <p>Как слушать оперу впервые и&nbsp;не&nbsp;заскучать: короткий путеводитель по&nbsp;жанру с&nbsp;живыми музыкальными примерами.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [зал / фойе]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1,5 часа</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[вход свободный по регистрации]</li>
+            </ul>
+            <a class="btn btn--blue btn--block" href="#">Записаться</a>
+          </article>
+
+          <!-- ЗАГЛУШКА: встреча 2 -->
+          <article class="event event--blue reveal">
+            <svg class="event__deco" aria-hidden="true"><use href="#i-star"/></svg>
+            <div class="event__top">
+              <div class="event__date"><b>00</b><span>декабря<br>19:00</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>встреча с&nbsp;артистом</span>
+            </div>
+            <h3>Голос <span class="script">изнутри</span></h3>
+            <p>[Имя солиста]&nbsp;— о&nbsp;первой роли, страхе сцены и&nbsp;о&nbsp;том, как готовится партия.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [зал / фойе]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1,5 часа</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[вход свободный по регистрации]</li>
+            </ul>
+            <a class="btn btn--block" href="#">Записаться</a>
+          </article>
+
+          <!-- ЗАГЛУШКА: встреча 3 -->
+          <article class="event event--wine reveal">
+            <svg class="event__deco" aria-hidden="true"><use href="#i-spark"/></svg>
+            <div class="event__top">
+              <div class="event__date"><b>00</b><span>января<br>19:00</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>за кулисами</span>
+            </div>
+            <h3>Как рождается <span class="script">спектакль</span></h3>
+            <p>Экскурсия-разговор: от&nbsp;эскиза декорации до&nbsp;первого звонка. Знакомимся с&nbsp;теми, кого не&nbsp;видно из&nbsp;зала.</p>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [место сбора]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1 часа</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[количество мест ограничено]</li>
+            </ul>
+            <a class="btn btn--block" href="#">Записаться</a>
+          </article>
+        </div>
+
+        <div class="card notice reveal">
+          <svg aria-hidden="true"><use href="#i-spark"/></svg>
+          <p>Хотите узнавать о&nbsp;встречах первыми?<span>Анонсы, регистрация и&nbsp;фото с&nbsp;прошедших встреч&nbsp;— в&nbsp;нашем телеграм-канале.</span></p>
+          <a class="btn btn--blue" href="#contacts">Подписаться</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- КАК ПОПАСТЬ -->
+    <section class="section" id="how" style="padding-top:24px">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow">Как попасть</p>
+          <h2>Три шага <br>до&nbsp;<span class="script">встречи</span></h2>
+        </div>
+
+        <div class="steps">
+          <article class="card step reveal">
+            <h3>Выберите встречу</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Смотрите афишу выше или&nbsp;анонсы в&nbsp;телеграм-канале&nbsp;— там появляются новые даты.</p>
+          </article>
+          <article class="card step reveal">
+            <h3>Зарегистрируйтесь</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Нажмите «Записаться» и&nbsp;заполните короткую форму. [Заглушка: где и&nbsp;как приходит подтверждение.]</p>
+          </article>
+          <article class="card step reveal">
+            <h3>Приходите в&nbsp;МАМТ</h3>
+            <!-- ЗАГЛУШКА -->
+            <p>Приходите за&nbsp;15 минут до&nbsp;начала. [Заглушка: нужен ли&nbsp;паспорт, какой вход, кто встречает.]</p>
+          </article>
+        </div>
+
+        <div class="venue">
+          <div class="card venue__card reveal">
+            <div class="rings" aria-hidden="true">
+              <i style="width:520px;height:520px;left:90%;top:20%"></i>
+              <i style="width:760px;height:760px;left:90%;top:20%"></i>
+            </div>
+            <p class="eyebrow">Где проходят встречи</p>
+            <h3>Музыкальный театр <br>Станиславского и&nbsp;<span class="nowrap">Немировича-Данченко</span></h3>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>Москва, ул.&nbsp;Большая Дмитровка, 17</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>м.&nbsp;Чеховская, Пушкинская, Тверская</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Заглушка: вход / подъезд, ориентир]</li>
+            </ul>
+            <a class="btn" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%2C%2017" target="_blank" rel="noopener">Открыть на карте</a>
+          </div>
+
+          <div class="card faq reveal">
+            <h3>Частые вопросы</h3>
+            <!-- ЗАГЛУШКА: ответы уточнить -->
+            <details>
+              <summary>Сколько стоит участие?</summary>
+              <p>[Заглушка: бесплатно по&nbsp;регистрации / стоимость билета.]</p>
+            </details>
+            <details>
+              <summary>Нужно ли разбираться в&nbsp;опере?</summary>
+              <p>Совсем нет. Встречи рассчитаны на&nbsp;тех, кто приходит впервые, — и&nbsp;на&nbsp;тех, кто хочет узнать больше.</p>
+            </details>
+            <details>
+              <summary>Есть ли возрастные ограничения?</summary>
+              <p>[Заглушка: например, 12+.]</p>
+            </details>
+            <details>
+              <summary>Можно ли прийти без регистрации?</summary>
+              <p>[Заглушка: правила входа при наличии свободных мест.]</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФИНАЛЬНЫЙ ПРИЗЫВ -->
+    <section class="finale">
+      <div class="rings rings--ink" aria-hidden="true">
+        <i style="width:min(110vw,620px);height:min(110vw,620px)"></i>
+        <i style="width:min(150vw,900px);height:min(150vw,900px)"></i>
+      </div>
+      <svg class="deco deco--gold float" aria-hidden="true"><use href="#i-gold-star"/></svg>
+      <svg class="deco deco--blue float float--slow" aria-hidden="true"><use href="#i-glass-star"/></svg>
+      <div class="wrap">
+        <div class="finale__inner reveal">
+          <h2>Ищем путь к&nbsp;опере <span class="script">вместе со&nbsp;зрителем</span></h2>
+          <p>Приходите на&nbsp;первую встречу&nbsp;— дальше будет проще, интереснее и&nbsp;громче.</p>
+          <a class="btn btn--blue" href="#events" style="min-width:260px">Выбрать встречу</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- КОНТАКТЫ -->
+    <section id="contacts" style="padding-bottom:24px">
+      <div class="wrap">
+        <div class="contacts__panel reveal">
+          <p class="eyebrow">Контакты</p>
+          <h2>Давайте <span class="script">дружить</span></h2>
+          <p class="lead">Пишите по&nbsp;любым вопросам: о&nbsp;встречах, сотрудничестве и&nbsp;участии в&nbsp;проекте.</p>
+
+          <!-- ЗАГЛУШКИ: заменить ссылки (href) и подписи на настоящие -->
+          <div class="contacts__grid">
+            <a class="contact" href="#" target="_blank" rel="noopener">
+              <span class="contact__label">Telegram</span>
+              <span class="contact__value">@operitiv</span>
+              <span class="contact__hint">анонсы и регистрация</span>
+            </a>
+            <a class="contact" href="#" target="_blank" rel="noopener">
+              <span class="contact__label">ВКонтакте</span>
+              <span class="contact__value">vk.com/operitiv</span>
+              <span class="contact__hint">фото и новости</span>
+            </a>
+            <a class="contact" href="mailto:hello@example.com">
+              <span class="contact__label">Почта</span>
+              <span class="contact__value">hello@example.com</span>
+              <span class="contact__hint">для вопросов и партнёров</span>
+            </a>
+            <div class="contact">
+              <span class="contact__label">Координатор</span>
+              <span class="contact__value">[Имя Фамилия]</span>
+              <span class="contact__hint">[телефон или&nbsp;ник]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__row">
+      <a class="logo" href="#hero"><svg aria-hidden="true"><use href="#i-spark"/></svg>Оперитив</a>
+      <span>Оперный проект студентов ГИТИС при МАМТ</span>
+      <span>© <span id="year">2026</span></span>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    // Мобильное меню
+    (function () {
+      var top = document.getElementById('top');
+      var btn = top.querySelector('.burger');
+      function setOpen(open) {
+        top.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+      }
+      btn.addEventListener('click', function () { setOpen(!top.classList.contains('is-open')); });
+      top.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+      document.addEventListener('click', function (e) { if (!top.contains(e.target)) setOpen(false); });
+    })();
+
+    // Плавное появление блоков
+    (function () {
+      var items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
