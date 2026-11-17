@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Оперитив — оперный проект студентов ГИТИС при МАМТ</title>
-  <meta name="description" content="«Оперитив» — оперный проект студентов ГИТИС при МАМТ: лекции, встречи с артистами и разговоры за кулисами. Ищем путь к опере вместе со зрителем.">
-  <meta name="theme-color" content="#dbe6f5">
+  <title>Оперитив — оперный клуб МАМТ</title>
+  <meta name="description" content="«Оперитив» — оперный клуб Музыкального театра Станиславского и Немировича-Данченко, проект студенток ГИТИС. Лекции, встречи с артистами и разговоры за кулисами. Ищем путь к опере вместе со зрителем.">
+  <meta name="theme-color" content="#dde7f6">
   <meta name="color-scheme" content="light">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Оперитив — ищем путь к опере вместе со зрителем">
-  <meta property="og:description" content="Лекции, встречи с артистами и разговоры за кулисами. Проект студентов ГИТИС при МАМТ.">
+  <meta property="og:description" content="Оперный клуб МАМТ: лекции, встречи с артистами и разговоры за кулисами.">
   <meta property="og:locale" content="ru_RU">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='28' fill='%236b1421'/%3E%3Cpath fill='%23dbe6f5' d='M50 14 L56 44 L86 50 L56 56 L50 86 L44 56 L14 50 L44 44Z'/%3E%3C/svg%3E">
 
@@ -19,18 +19,17 @@
 
   <style>
     :root {
-      /* Фирменные цвета (по референсам) */
-      --ink: #1d1b33;          /* глубокий чернильный — основной текст */
+      /* Фирменные цвета */
+      --ink: #1d1b33;
       --ink-soft: #4b4968;
-      --blue: #a3bddf;         /* небесно-голубой — кнопки, карточки */
+      --blue: #a3bddf;
       --blue-deep: #6f92c3;
       --blue-pale: #dde7f6;
-      --wine: #6b1421;         /* бордо из ткани */
+      --wine: #6b1421;
       --wine-deep: #470b15;
-      --green: #5cc23f;        /* яркий зелёный — точечный акцент */
+      --green: #5cc23f;
       --lilac: #e4d8f7;
       --pink: #f6d2ea;
-      --peach: #ffae86;
       --gold: #e6c46a;
       --paper: #f8f7fc;
       --white: #ffffff;
@@ -47,7 +46,7 @@
     @media (min-width: 720px) { :root { --gutter: 32px; } }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
@@ -61,7 +60,6 @@
       overflow-x: clip;
       -webkit-font-smoothing: antialiased;
     }
-    /* Мягкий пастельный фон-«дымка», как на референсе */
     body::before {
       content: "";
       position: fixed;
@@ -80,7 +78,7 @@
     :focus-visible { outline: 3px solid var(--blue-deep); outline-offset: 3px; border-radius: 8px; }
 
     .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .nowrap { white-space: nowrap; }
 
     /* ---------- Типографика ---------- */
     .eyebrow {
@@ -101,7 +99,7 @@
       letter-spacing: .005em;
       margin: 0;
     }
-    h2 { font-size: clamp(38px, 8.4vw, 72px); }
+    h2 { font-size: clamp(36px, 8vw, 68px); }
     h3 { font-size: clamp(22px, 4.6vw, 28px); line-height: 1.05; }
     .script {
       font-family: var(--f-script);
@@ -133,21 +131,18 @@
     .btn:hover::after { transform: translateX(4px); }
     .btn--blue { background: var(--blue-deep); color: var(--white); box-shadow: 0 10px 30px -12px rgba(111,146,195,.9); }
     .btn--blue:hover { background: #5a7db1; }
-    .btn--white { background: rgba(255,255,255,.88); color: var(--ink); box-shadow: 0 10px 30px -18px rgba(29,27,51,.45); }
+    .btn--white { background: rgba(255,255,255,.9); color: var(--ink); box-shadow: 0 10px 30px -18px rgba(29,27,51,.45); }
     .btn--wine { background: var(--wine); color: var(--white); }
     .btn--wine:hover { background: var(--wine-deep); }
     .btn--block { width: 100%; }
 
     /* ---------- Шапка ---------- */
-    .top {
-      position: sticky; top: 0; z-index: 50;
-      padding: 12px 0;
-    }
+    .top { position: sticky; top: 0; z-index: 50; padding: 12px 0; }
     .top__bar {
       display: flex; align-items: center; justify-content: space-between; gap: 12px;
       padding: 8px 8px 8px 20px;
       border-radius: 999px;
-      background: rgba(255,255,255,.66);
+      background: rgba(255,255,255,.7);
       -webkit-backdrop-filter: blur(16px) saturate(1.3);
       backdrop-filter: blur(16px) saturate(1.3);
       box-shadow: 0 8px 30px -18px rgba(29,27,51,.35);
@@ -158,10 +153,10 @@
       display: inline-flex; align-items: center; gap: 8px;
     }
     .logo svg { width: 18px; height: 18px; color: var(--wine); }
-    .nav { display: flex; align-items: center; gap: 4px; }
+    .nav { display: flex; align-items: center; gap: 2px; }
     .nav a {
       text-decoration: none; font-size: 15px; font-weight: 500;
-      padding: 10px 14px; border-radius: 999px; color: var(--ink-soft);
+      padding: 10px 12px; border-radius: 999px; color: var(--ink-soft);
       transition: background-color .2s, color .2s;
     }
     .nav a:hover { background: var(--blue-pale); color: var(--ink); }
@@ -181,24 +176,25 @@
     .top.is-open .burger span::before { transform: translateY(6px) rotate(45deg); }
     .top.is-open .burger span::after { transform: translateY(-6px) rotate(-45deg); }
 
-    @media (max-width: 859px) {
+    @media (max-width: 1039px) {
       .burger { display: inline-flex; }
       .top .btn--cta { display: none; }
       .nav {
         position: absolute; left: var(--gutter); right: var(--gutter); top: calc(100% - 2px);
         flex-direction: column; align-items: stretch; gap: 2px;
         padding: 10px; border-radius: var(--radius-md);
-        background: rgba(255,255,255,.94);
+        background: rgba(255,255,255,.95);
         -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
         box-shadow: 0 20px 40px -20px rgba(29,27,51,.4);
         opacity: 0; transform: translateY(-8px); pointer-events: none; visibility: hidden;
         transition: opacity .2s ease, transform .2s ease, visibility .2s;
+        max-height: calc(100vh - 100px); overflow-y: auto;
       }
-      .nav a { padding: 14px 16px; font-size: 17px; color: var(--ink); }
+      .nav a { padding: 13px 16px; font-size: 17px; color: var(--ink); }
       .nav .btn { margin-top: 6px; }
       .top.is-open .nav { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
     }
-    @media (min-width: 860px) { .nav .btn { display: none; } }
+    @media (min-width: 1040px) { .nav .btn { display: none; } }
 
     /* ---------- Декор ---------- */
     .deco { position: absolute; pointer-events: none; z-index: 0; }
@@ -219,38 +215,48 @@
     .rings--ink i { border-color: rgba(29,27,51,.08); }
 
     /* ---------- Hero ---------- */
-    .hero {
-      position: relative;
-      padding: 40px 0 72px;
-      text-align: center;
-      overflow: hidden;
-    }
+    .hero { position: relative; padding: 40px 0 72px; text-align: center; overflow: hidden; }
     .hero__inner { position: relative; z-index: 1; }
-    .hero__orb {
-      position: absolute; left: 50%; top: 40%;
-      width: min(130vw, 860px); aspect-ratio: 1;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      background:
-        radial-gradient(closest-side at 50% 52%, rgba(255,146,100,.95) 0%, rgba(255,170,130,.85) 24%, rgba(240,170,215,.75) 46%, rgba(130,164,214,.6) 68%, rgba(163,189,223,.25) 86%, transparent 100%);
-      filter: blur(28px);
-      border-radius: 50%;
-      animation: breathe 9s ease-in-out infinite;
-    }
-    @keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-52%) scale(1.06); } }
-    @media (prefers-reduced-motion: reduce) { .hero__orb { animation: none; } }
-
     .hero .eyebrow { justify-content: center; color: var(--ink); }
     .hero h1 {
+      position: relative;
       font-size: clamp(64px, 19vw, 200px);
       line-height: .9;
       letter-spacing: .01em;
       color: var(--white);
-      text-shadow: 0 6px 30px rgba(71,11,21,.22), 0 1px 2px rgba(29,27,51,.12);
+      text-shadow: 0 4px 26px rgba(71,11,21,.35), 0 1px 2px rgba(29,27,51,.15);
       margin: 18px 0 0;
     }
+    /* Градиент под словом «Оперитив»: бордо → голубой → белый */
+    .hero h1::before {
+      content: "";
+      position: absolute; left: 50%; top: 50%;
+      width: max(125%, 420px); height: 330%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      background: radial-gradient(closest-side,
+        rgba(107,20,33,.97) 0%,
+        rgba(122,28,45,.9) 26%,
+        rgba(150,110,150,.72) 42%,
+        rgba(163,189,223,.85) 56%,
+        rgba(205,221,242,.75) 72%,
+        rgba(255,255,255,.7) 86%,
+        rgba(255,255,255,0) 100%);
+      filter: blur(26px);
+      border-radius: 50%;
+      animation: breathe 9s ease-in-out infinite;
+    }
+    @media (max-width: 719px) {
+      .hero h1::before { width: 150%; height: 460%; }
+      .hero .eyebrow { font-size: 11.5px; letter-spacing: .05em; }
+      .hero__star { top: 1% !important; left: 3% !important; width: 40px !important; }
+    }
+    @keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.05); } }
+    @media (prefers-reduced-motion: reduce) { .hero h1::before { animation: none; } }
+
     .hero__slogan {
-      margin: 18px auto 0;
+      position: relative;
+      margin: 22px auto 0;
       font-family: var(--f-head); font-weight: 500; text-transform: uppercase;
       font-size: clamp(22px, 5.4vw, 44px); line-height: 1.05;
       color: var(--ink);
@@ -266,12 +272,10 @@
     .pill {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 8px 16px; border-radius: 999px;
-      background: rgba(255,255,255,.7); color: var(--ink);
+      background: rgba(255,255,255,.75); color: var(--ink);
       font-size: 14px; font-weight: 500; white-space: nowrap;
     }
     .pill svg { width: 12px; height: 12px; color: var(--wine); }
-    .pill--blue { background: var(--blue); color: var(--white); }
-    .pill--blue svg { color: var(--white); }
 
     /* ---------- Бегущая строка ---------- */
     .ticker-wrap { overflow: hidden; padding: 24px 0; margin: -24px 0; }
@@ -282,7 +286,7 @@
       transform: rotate(-1.5deg); margin: 0 -10px;
       box-shadow: 0 20px 40px -24px rgba(71,11,21,.7);
     }
-    .ticker__track { display: flex; width: max-content; animation: ticker 32s linear infinite; }
+    .ticker__track { display: flex; width: max-content; animation: ticker 36s linear infinite; }
     .ticker__item {
       display: inline-flex; align-items: center; gap: 22px; padding-right: 22px;
       font-family: var(--f-head); font-weight: 500; text-transform: uppercase;
@@ -297,11 +301,22 @@
     section { position: relative; }
     .section { padding: 96px 0; }
     @media (max-width: 719px) { .section { padding: 72px 0; } }
+    .section--tight { padding-top: 24px; }
     .section__head { position: relative; z-index: 1; margin-bottom: 40px; }
     .section__head--center { text-align: center; }
     .section__head--center .eyebrow { justify-content: center; }
     .section__head--center .lead { margin-left: auto; margin-right: auto; }
     .section__head .lead { margin-top: 18px; }
+
+    .card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.8);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      padding: 28px 24px;
+      box-shadow: 0 20px 50px -34px rgba(29,27,51,.5);
+    }
+    @media (min-width: 720px) { .card { padding: 32px 30px; } }
 
     /* О проекте */
     .about__grid { display: grid; gap: 40px; align-items: center; position: relative; z-index: 1; }
@@ -317,31 +332,17 @@
       box-shadow: 0 30px 60px -30px rgba(71,11,21,.55);
     }
     .about__photo {
-      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      position: relative; border-radius: var(--radius-lg); overflow: hidden; margin: 0;
       aspect-ratio: 4 / 3.3;
       box-shadow: 0 30px 70px -30px rgba(29,27,51,.55);
     }
     .about__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% center; }
-    .about__photo figcaption {
-      position: absolute; left: 14px; bottom: 14px;
-    }
     .about__media .deco { right: -14px; top: -26px; width: 78px; --r: 12deg; }
     @media (max-width: 719px) { .about__media .deco { right: 4px; width: 60px; } }
 
     .formats { display: grid; gap: 14px; margin-top: 56px; position: relative; z-index: 1; }
     @media (min-width: 760px) { .formats { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
-    .card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.78);
-      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      padding: 28px 24px;
-      box-shadow: 0 20px 50px -34px rgba(29,27,51,.5);
-    }
-    .format__num {
-      font-family: var(--f-head); font-weight: 700; font-size: 15px;
-      color: var(--blue-deep); letter-spacing: .1em;
-    }
+    .format__num { font-family: var(--f-head); font-weight: 700; font-size: 15px; color: var(--blue-deep); letter-spacing: .1em; }
     .format h3 { margin: 14px 0 12px; }
     .format p { margin: 0; color: var(--ink-soft); font-size: 15px; }
     .format__icon {
@@ -349,39 +350,64 @@
       display: grid; place-items: center; background: var(--blue-pale); color: var(--wine);
     }
     .format__icon svg { width: 22px; height: 22px; }
-    .format--accent { background: var(--blue); color: var(--ink); }
+    .format--accent { background: var(--blue); }
     .format--accent .format__num { color: var(--wine); }
     .format--accent p { color: var(--ink); }
-    .format--accent .format__icon { background: rgba(255,255,255,.55); color: var(--wine); }
+    .format--accent .format__icon { background: rgba(255,255,255,.55); }
 
-    /* Круг «путь к опере» */
-    .path { padding-top: 24px; }
-    .path__circle {
-      position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto;
+    /* Знакомо? — проблема и решение */
+    .gap__grid { display: grid; gap: 18px; position: relative; z-index: 1; align-items: stretch; }
+    @media (min-width: 900px) { .gap__grid { grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; } }
+    .gap__card h3 { font-size: 24px; margin-bottom: 18px; }
+    .gap__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .gap__list li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; }
+    .gap__mark {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: grid; place-items: center; font-weight: 600; font-size: 14px; line-height: 1;
     }
-    .path__ring {
-      position: absolute; inset: 14%;
-      border-radius: 50%; border: 1.5px solid rgba(111,146,195,.55);
+    .gap__card--before .gap__mark { background: rgba(29,27,51,.07); color: var(--ink-soft); }
+    .gap__card--before li { color: var(--ink-soft); }
+    .gap__card--after { background: var(--wine); color: var(--white); }
+    .gap__card--after .eyebrow { color: var(--blue-pale); }
+    .gap__card--after .gap__mark { background: var(--blue); color: var(--wine-deep); font-family: var(--f-head); font-weight: 700; font-size: 15px; }
+    .gap__card--after li b { display: block; font-weight: 600; }
+    .gap__card--after li span { color: rgba(255,255,255,.78); font-size: 15px; }
+    .gap__arrow {
+      justify-self: center; width: 56px; height: 56px; border-radius: 50%;
+      display: grid; place-items: center; background: var(--blue-deep); color: var(--white);
+      font-size: 24px; box-shadow: 0 10px 30px -10px rgba(111,146,195,.9);
     }
-    .path__center {
-      position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
-      font-family: var(--f-script); color: var(--wine);
-      font-size: clamp(40px, 10vw, 64px); line-height: .95;
+    @media (max-width: 899px) { .gap__arrow { transform: rotate(90deg); margin: -6px 0; } }
+
+    /* Команда */
+    .team__grid { display: grid; gap: 40px; position: relative; z-index: 1; }
+    @media (min-width: 900px) { .team__grid { grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; } }
+    .team__photos { position: relative; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .team__photos figure { margin: 0; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 3 / 4; box-shadow: 0 30px 60px -30px rgba(29,27,51,.55); }
+    .team__photos figure:nth-child(2) { transform: translateY(36px); }
+    .team__photos img { width: 100%; height: 100%; object-fit: cover; }
+    .team__photos .deco { left: -16px; top: -22px; width: 26px; color: var(--wine); z-index: 2; }
+    .team__text p { margin: 0 0 16px; color: var(--ink-soft); }
+    .team__text p:first-of-type { color: var(--ink); font-size: clamp(17px, 2.4vw, 20px); }
+    .roles { display: grid; gap: 10px; margin-top: 24px; }
+    @media (min-width: 560px) { .roles { grid-template-columns: 1fr 1fr; } }
+    .role { padding: 18px 20px; border-radius: var(--radius-md); background: rgba(255,255,255,.8); }
+    .role b { display: block; font-family: var(--f-head); font-weight: 500; font-size: 20px; text-transform: uppercase; line-height: 1.1; }
+    .role span { font-size: 14px; color: var(--ink-soft); }
+
+    .curator {
+      display: grid; gap: 24px; margin-top: 72px; position: relative; z-index: 1;
+      background: var(--blue); overflow: hidden;
     }
-    .path__center small {
-      display: block; font-family: var(--f-text); font-size: 13px; color: var(--ink-soft);
-      letter-spacing: .08em; text-transform: uppercase; margin-top: 10px;
-    }
-    .path__step {
-      position: absolute; transform: translate(-50%, -50%);
-      font-size: clamp(13px, 3.4vw, 16px);
-      padding: 8px 14px;
-      background: var(--blue); color: var(--ink);
-      box-shadow: 0 10px 24px -14px rgba(111,146,195,1);
-    }
-    .path__step:nth-child(odd) { background: var(--white); color: var(--ink); box-shadow: 0 10px 24px -16px rgba(29,27,51,.5); }
-    .path__arrow { position: absolute; width: 28px; left: 24%; top: 21%; color: var(--blue-deep); transform: rotate(-30deg); }
-    .path__note { text-align: center; max-width: 30em; margin: 24px auto 0; }
+    @media (min-width: 760px) { .curator { grid-template-columns: 240px 1fr; gap: 36px; align-items: center; } }
+    .curator__photo { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4 / 5; max-width: 240px; box-shadow: 0 24px 50px -24px rgba(29,27,51,.6); }
+    .curator__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .curator .eyebrow { color: var(--ink); }
+    .curator h3 { font-size: clamp(26px, 5vw, 40px); margin-bottom: 14px; }
+    .curator p { margin: 0 0 12px; color: var(--ink); }
+    .curator p.small { color: var(--ink); opacity: .8; }
+    .curator .rings i { border-color: rgba(255,255,255,.5); }
+    .curator > *:not(.rings) { position: relative; z-index: 1; }
 
     /* Афиша */
     .events__list { display: grid; gap: 18px; position: relative; z-index: 1; }
@@ -389,48 +415,96 @@
     .event {
       display: flex; flex-direction: column; gap: 14px;
       border-radius: var(--radius-lg); padding: 26px 24px 24px;
-      background: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.85);
       box-shadow: 0 24px 50px -34px rgba(29,27,51,.55);
       position: relative; overflow: hidden;
     }
-    .event--blue { background: var(--blue); color: var(--ink); }
     .event--wine { background: var(--wine); color: var(--white); }
-    .event__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .event--blue { background: var(--blue); color: var(--ink); }
+    .event__badge {
+      align-self: flex-start;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 999px; background: var(--green); color: var(--wine-deep);
+    }
+    .event__top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px; }
     .event__date { display: flex; align-items: flex-end; gap: 10px; }
     .event__date b { font-family: var(--f-head); font-size: 64px; line-height: .8; font-weight: 700; }
     .event__date span { font-size: 14px; line-height: 1.3; opacity: .85; padding-bottom: 2px; }
     .event .pill { font-size: 13px; padding: 6px 12px; }
-    .event--blue .pill { background: rgba(255,255,255,.6); color: var(--ink); }
     .event--wine .pill { background: rgba(255,255,255,.18); color: var(--white); }
     .event--wine .pill svg { color: var(--white); }
-    .event--blue h3 .script { color: var(--wine); }
-    .event--blue li svg { color: var(--wine); }
-    .event h3 { margin-top: 8px; }
-    .event h3 .script { font-size: 1.45em; color: inherit; }
-    .event--light h3 .script { color: var(--wine); }
-    .event p { margin: 0; font-size: 15px; opacity: .9; }
-    .event ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; font-size: 14px; }
-    .event li { display: flex; gap: 8px; align-items: baseline; opacity: .92; }
-    .event li svg { width: 10px; height: 10px; flex: none; transform: translateY(1px); }
-    .event .btn { margin-top: auto; }
-    .event--blue .btn { background: var(--white); color: var(--ink); }
-    .event--blue .event__deco { color: var(--white); opacity: .35; }
-    .event--wine .btn { background: var(--blue-pale); color: var(--ink); }
-    .event__deco { position: absolute; right: -30px; bottom: -30px; width: 140px; opacity: .18; pointer-events: none; }
-
-    .notice {
-      display: grid; gap: 18px; align-items: center;
-      margin-top: 18px; position: relative; z-index: 1;
+    .event--blue .pill { background: rgba(255,255,255,.6); }
+    .event h3 { margin-top: 4px; }
+    .event h3 .script { font-size: 1.45em; color: var(--wine); }
+    .event--wine h3 .script { color: var(--blue); }
+    .event p { margin: 0; font-size: 15px; opacity: .92; }
+    .event__extra {
+      display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center;
+      padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.12);
+      font-size: 14px; line-height: 1.4;
     }
+    .event__extra svg { width: 22px; height: 22px; color: var(--blue); }
+    .event__extra b { display: block; font-weight: 600; }
+    .event ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; font-size: 14px; }
+    .event li { display: flex; gap: 8px; align-items: baseline; opacity: .95; }
+    .event li svg { width: 10px; height: 10px; flex: none; transform: translateY(1px); color: var(--wine); }
+    .event--wine li svg { color: var(--blue); }
+    .event .btn { margin-top: auto; }
+    .event--wine .btn { background: var(--white); color: var(--ink); }
+    .event--blue .btn { background: var(--white); color: var(--ink); }
+    .event__deco { position: absolute; right: -30px; bottom: -30px; width: 140px; opacity: .2; pointer-events: none; }
+    .event--blue .event__deco { color: var(--white); opacity: .4; }
+    .event--ph { border: 1.5px dashed rgba(111,146,195,.6); box-shadow: none; background: rgba(255,255,255,.55); }
+
+    .notice { display: grid; gap: 18px; align-items: center; margin-top: 18px; position: relative; z-index: 1; }
     @media (min-width: 760px) { .notice { grid-template-columns: auto 1fr auto; gap: 24px; } }
     .notice > svg { width: 30px; height: 30px; color: var(--ink); }
     .notice p { margin: 0; font-weight: 500; }
     .notice p span { display: block; font-weight: 400; color: var(--ink-soft); font-size: 14px; margin-top: 4px; }
 
+    /* Фото */
+    .gallery { display: grid; grid-auto-flow: dense; grid-template-columns: repeat(2, 1fr); gap: 10px; position: relative; z-index: 1; }
+    @media (min-width: 760px) { .gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; grid-auto-rows: 200px; } }
+    @media (max-width: 759px) { .gallery { grid-auto-rows: 150px; } }
+    .gallery__item {
+      position: relative; margin: 0; border-radius: var(--radius-md); overflow: hidden;
+      border: 0; padding: 0; background: var(--blue-pale); cursor: pointer; color: inherit; font: inherit;
+    }
+    .gallery__item--wide { grid-column: span 2; }
+    .gallery__item--tall { grid-row: span 2; }
+    .gallery__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .gallery__item:hover img { transform: scale(1.04); }
+    .gallery__item figcaption {
+      position: absolute; left: 10px; bottom: 10px; right: 10px; text-align: left;
+    }
+    .gallery__item figcaption .pill { white-space: normal; font-size: 13px; padding: 6px 12px; }
+    .gallery__ph {
+      cursor: default;
+      display: grid; place-items: center; text-align: center; padding: 16px;
+      color: var(--ink-soft); font-size: 13px;
+      background:
+        radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,.9), transparent 60%),
+        linear-gradient(135deg, var(--blue-pale), var(--lilac));
+    }
+    .gallery__ph:nth-of-type(3n) { background: linear-gradient(135deg, var(--blue), var(--blue-pale)); }
+    .gallery__ph:nth-of-type(4n) { background: linear-gradient(135deg, #8a2a3a, var(--wine)); color: rgba(255,255,255,.8); }
+    .gallery__ph svg { display: block; width: 26px; height: 26px; margin: 0 auto 8px; color: currentColor; opacity: .7; }
+
+    .lightbox {
+      border: 0; padding: 0; background: transparent; max-width: min(92vw, 1100px); max-height: 90vh;
+    }
+    .lightbox::backdrop { background: rgba(29,27,51,.82); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .lightbox img { max-width: 100%; max-height: 82vh; border-radius: 18px; margin: 0 auto; }
+    .lightbox p { color: var(--white); text-align: center; margin: 12px 0 0; font-size: 14px; }
+    .lightbox button {
+      position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 50%; border: 0;
+      background: var(--white); color: var(--ink); font-size: 24px; cursor: pointer; line-height: 1;
+    }
+
     /* Как попасть */
     .steps { display: grid; gap: 14px; position: relative; z-index: 1; counter-reset: step; }
     @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
-    .step { padding-top: 76px; }
+    .step { padding-top: 76px !important; }
     .step::before {
       counter-increment: step; content: counter(step);
       position: absolute; left: 24px; top: 22px;
@@ -439,31 +513,30 @@
       font-family: var(--f-head); font-weight: 700; font-size: 18px;
       background: var(--wine); color: var(--white);
     }
+    @media (min-width: 720px) { .step::before { left: 30px; } }
     .step h3 { margin-bottom: 10px; font-size: 22px; }
     .step p { margin: 0; color: var(--ink-soft); font-size: 15px; }
 
     .venue { display: grid; gap: 18px; margin-top: 18px; position: relative; z-index: 1; }
     @media (min-width: 900px) { .venue { grid-template-columns: 1.1fr .9fr; } }
-    .venue__card { background: var(--blue); color: var(--ink); padding: 30px 26px; overflow: hidden; }
-    .venue__card li svg { color: var(--wine); }
-    .venue__card h3 { font-size: clamp(23px, 5vw, 36px); margin: 4px 0 14px; }
-    .nowrap { white-space: nowrap; }
+    .venue__card { background: var(--blue); overflow: hidden; }
+    .venue__card h3 { font-size: clamp(24px, 5vw, 36px); margin: 4px 0 14px; }
     .venue__card .eyebrow { color: var(--ink); }
-    .venue__card ul { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 8px; font-size: 15px; }
-    .venue__card li { display: flex; gap: 10px; align-items: baseline; }
-    .venue__card li svg { width: 11px; height: 11px; flex: none; }
+    .venue__card > p { margin: 0 0 20px; }
+    .venue__next {
+      background: rgba(255,255,255,.65); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 20px;
+    }
+    .venue__next b { font-family: var(--f-head); font-weight: 700; font-size: 26px; text-transform: uppercase; display: block; line-height: 1.1; }
+    .venue__next span { font-size: 14px; color: var(--ink-soft); }
     .venue__card .btn { background: var(--white); color: var(--ink); }
     .venue__card .rings i { border-color: rgba(255,255,255,.55); }
     .venue__card > *:not(.rings) { position: relative; z-index: 1; }
 
-    .faq { padding: 12px 22px; }
+    .faq { padding-top: 12px !important; padding-bottom: 12px !important; }
     .faq h3 { font-size: 20px; padding: 16px 0 6px; }
     .faq details { border-top: 1px solid rgba(29,27,51,.08); }
     .faq details:first-of-type { border-top: 0; }
-    .faq summary {
-      list-style: none; cursor: pointer; padding: 16px 36px 16px 0; position: relative;
-      font-weight: 500;
-    }
+    .faq summary { list-style: none; cursor: pointer; padding: 16px 40px 16px 0; position: relative; font-weight: 500; }
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
       content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
@@ -474,13 +547,26 @@
     .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
     .faq details p { margin: 0 0 16px; color: var(--ink-soft); font-size: 15px; }
 
+    /* Сотрудничество */
+    .partners__grid { display: grid; gap: 18px; position: relative; z-index: 1; }
+    @media (min-width: 900px) { .partners__grid { grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch; } }
+    .partners__text p { margin: 0 0 14px; color: var(--ink-soft); }
+    .partners__text p:first-of-type { color: var(--ink); font-size: clamp(17px, 2.4vw, 19px); }
+    .partners__hello { background: var(--wine); color: var(--white); display: flex; flex-direction: column; gap: 14px; overflow: hidden; }
+    .partners__hello h3 { font-size: clamp(26px, 5vw, 34px); }
+    .partners__hello h3 .script { color: var(--blue); font-size: 1.5em; }
+    .partners__hello p { margin: 0; color: rgba(255,255,255,.85); }
+    .partners__person { padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,.1); font-size: 14px; line-height: 1.6; }
+    .partners__person b { display: block; font-size: 16px; }
+    .partners__person a { color: var(--blue-pale); }
+    .partners__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+    .partners__actions .btn { flex: 1 1 180px; }
+    .partners__hello .btn--white { background: var(--white); }
+    .partners__hello .btn--line { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.5); }
+
     /* Финальный призыв */
     .finale { padding: 40px 0 96px; text-align: center; overflow: hidden; }
-    .finale__inner {
-      position: relative; z-index: 1;
-      max-width: 640px; margin: 0 auto;
-      padding: 40px 0;
-    }
+    .finale__inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 40px 0; }
     .finale h2 { font-size: clamp(36px, 8vw, 64px); }
     .finale h2 .script { display: block; font-size: 1.5em; line-height: 1; margin-top: 4px; }
     .finale p { margin: 22px auto 30px; max-width: 26em; color: var(--ink-soft); }
@@ -521,12 +607,15 @@
       border: 1px solid rgba(255,255,255,.14);
       text-decoration: none;
       transition: background-color .2s, transform .2s;
-      min-height: 112px;
+      min-height: 120px;
     }
-    a.contact:hover { background: rgba(255,255,255,.18); transform: translateY(-2px); }
+    a.contact:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
     .contact__label { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); font-weight: 500; }
     .contact__value { font-family: var(--f-head); font-weight: 500; font-size: 22px; line-height: 1.15; word-break: break-word; }
-    .contact__hint { font-size: 13px; color: rgba(255,255,255,.7); margin-top: auto; }
+    .contact__hint { font-size: 13px; color: rgba(255,255,255,.72); margin-top: auto; }
+    .contact__hint::after { content: " ↗"; }
+    a.contact[href^="tel:"] .contact__hint::after { content: ""; }
+    .contacts__note { font-size: 12px; color: rgba(255,255,255,.55); margin: 20px 0 0; }
 
     /* Подвал */
     .footer { padding: 36px 0 calc(36px + env(safe-area-inset-bottom)); }
@@ -535,8 +624,10 @@
       font-size: 13px; color: var(--ink-soft);
     }
     .footer .logo { font-size: 16px; color: var(--ink); }
+    .footer a { text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
 
-    /* Появление при прокрутке (только если JS работает) */
+    /* Появление при прокрутке */
     .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
     .js .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } }
@@ -575,6 +666,8 @@
       <symbol id="i-mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></g></symbol>
       <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></g></symbol>
       <symbol id="i-curtain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M4 3v18M20 3v18"/><path d="M4 3c0 6 3 10 7 11M20 3c0 6-3 10-7 11"/></g></symbol>
+      <symbol id="i-hanger" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7a2 2 0 1 1 2-2c0 1.2-2 1.6-2 3v1"/><path d="M12 9 3 15.5A1.5 1.5 0 0 0 3.9 18h16.2a1.5 1.5 0 0 0 .9-2.5z"/></g></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.3l1.4-2h7.6l1.4 2h2.3A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.5"/></g></symbol>
     </defs>
   </svg>
 
@@ -587,12 +680,15 @@
         </a>
         <nav class="nav" id="nav" aria-label="Разделы">
           <a href="#about">О проекте</a>
+          <a href="#team">Кто мы</a>
           <a href="#events">Встречи</a>
+          <a href="#photos">Фото</a>
           <a href="#how">Как попасть</a>
+          <a href="#partners">Сотрудничество</a>
           <a href="#contacts">Контакты</a>
-          <a class="btn btn--blue" href="#events">Записаться</a>
+          <a class="btn btn--blue" href="#events">Ближайшая встреча</a>
         </nav>
-        <a class="btn btn--blue btn--cta" href="#events">Записаться</a>
+        <a class="btn btn--blue btn--cta" href="#events">6 декабря</a>
         <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
       </div>
     </div>
@@ -602,17 +698,15 @@
 
     <!-- ПЕРВЫЙ ЭКРАН -->
     <section class="hero" id="hero">
-      <div class="hero__orb" aria-hidden="true"></div>
       <div class="rings" aria-hidden="true">
-        <i style="width:min(96vw,640px);height:min(96vw,640px)"></i>
-        <i style="width:min(140vw,900px);height:min(140vw,900px)"></i>
+        <i style="width:min(96vw,640px);height:min(96vw,640px);top:44%"></i>
+        <i style="width:min(140vw,900px);height:min(140vw,900px);top:44%"></i>
       </div>
-      <svg class="deco float" style="left:6%;top:16%;width:clamp(48px,10vw,92px);--r:-14deg" aria-hidden="true"><use href="#i-glass-star"/></svg>
-      <svg class="deco float float--slow" style="right:8%;top:58%;width:clamp(30px,6vw,52px);--r:10deg" aria-hidden="true"><use href="#i-gold-star"/></svg>
-      <svg class="deco" style="right:16%;top:14%;width:22px;color:var(--wine)" aria-hidden="true"><use href="#i-spark"/></svg>
+      <svg class="deco float hero__star" style="left:6%;top:16%;width:clamp(48px,10vw,92px);--r:-14deg;z-index:2" aria-hidden="true"><use href="#i-glass-star"/></svg>
+      <svg class="deco float float--slow" style="right:8%;top:62%;width:clamp(30px,6vw,52px);--r:10deg" aria-hidden="true"><use href="#i-gold-star"/></svg>
 
       <div class="wrap hero__inner">
-        <p class="eyebrow">Оперный проект студентов ГИТИС при МАМТ</p>
+        <p class="eyebrow">Оперный клуб МАМТ · проект студенток ГИТИС</p>
         <h1>Оперитив</h1>
         <p class="hero__slogan">Ищем путь к опере<br><span class="script">вместе</span> со зрителем</p>
         <p class="hero__text">Лекции, встречи с&nbsp;артистами и&nbsp;разговоры за&nbsp;кулисами&nbsp;— для&nbsp;тех, кто давно хотел понять оперу, но&nbsp;не&nbsp;знал, с&nbsp;чего начать.</p>
@@ -622,7 +716,7 @@
         </div>
         <div class="hero__pills" aria-label="Форматы">
           <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>лекции</span>
-          <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>встречи с артистами</span>
+          <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>встречи с артистами МАМТ</span>
           <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>разговоры за кулисами</span>
         </div>
       </div>
@@ -635,12 +729,14 @@
           <span>лекции</span><svg><use href="#i-spark"/></svg>
           <span>встречи с артистами</span><svg><use href="#i-spark"/></svg>
           <span>разговоры за кулисами</span><svg><use href="#i-spark"/></svg>
+          <span>розыгрыш билетов в театр</span><svg><use href="#i-spark"/></svg>
           <span class="script">Оперитив</span><svg><use href="#i-spark"/></svg>
         </div>
         <div class="ticker__item">
           <span>лекции</span><svg><use href="#i-spark"/></svg>
           <span>встречи с артистами</span><svg><use href="#i-spark"/></svg>
           <span>разговоры за кулисами</span><svg><use href="#i-spark"/></svg>
+          <span>розыгрыш билетов в театр</span><svg><use href="#i-spark"/></svg>
           <span class="script">Оперитив</span><svg><use href="#i-spark"/></svg>
         </div>
       </div>
@@ -654,18 +750,15 @@
             <p class="eyebrow">О проекте</p>
             <h2>Опера <span class="script">ближе,</span> чем&nbsp;кажется</h2>
             <div style="height:28px"></div>
-            <!-- ЗАГЛУШКА: текст о проекте — заменить -->
-            <p>«Оперитив»&nbsp;— проект студентов ГИТИС, который живёт на&nbsp;сцене и&nbsp;за&nbsp;кулисами МАМТ. Мы&nbsp;хотим, чтобы опера перестала быть «сложным искусством для&nbsp;своих».</p>
-            <p>Здесь можно задать любой вопрос&nbsp;— от&nbsp;«почему они поют на&nbsp;итальянском?» до&nbsp;«как певец не&nbsp;теряет голос к&nbsp;третьему акту?». Мы&nbsp;рассказываем, показываем и&nbsp;слушаем вместе с&nbsp;вами.</p>
-            <p class="small">[Заглушка: кто в&nbsp;команде, когда проект появился, кураторы и&nbsp;партнёры.]</p>
+            <p>«Оперитив»&nbsp;— оперный клуб Московского академического Музыкального театра имени К.С.&nbsp;Станиславского и&nbsp;Вл.И.&nbsp;Немировича-Данченко.</p>
+            <p>Наша задача&nbsp;— популяризировать оперу и&nbsp;сделать её ближе и&nbsp;понятнее зрителю. Для этого мы&nbsp;проводим регулярные встречи, каждая из&nbsp;которых посвящена отдельной теме: от&nbsp;истории создания конкретного спектакля до&nbsp;устройства оперного голоса и&nbsp;работы закулисных цехов.</p>
+            <p>Мы&nbsp;слушаем и&nbsp;обсуждаем фрагменты постановок, приглашаем артистов МАМТ к&nbsp;беседе со&nbsp;зрителями. А&nbsp;завершается вечер розыгрышем десяти пригласительных билетов, предоставленных театром.</p>
           </div>
 
           <div class="about__media reveal">
             <div class="about__pattern" aria-hidden="true"></div>
-            <figure class="about__photo" style="margin:0">
-              <!-- ЗАГЛУШКА: заменить фото на снимок с встречи «Оперитива» -->
-              <img src="assets/audience.jpg" alt="Зрители рассматривают картину — атмосфера встречи" width="1280" height="853" loading="lazy">
-              <figcaption><span class="pill">Фото: [автор]</span></figcaption>
+            <figure class="about__photo">
+              <img src="assets/audience.jpg" alt="Зрители рассматривают картину" width="1280" height="853" loading="lazy">
             </figure>
             <svg class="deco float" aria-hidden="true"><use href="#i-glass-star"/></svg>
           </div>
@@ -676,124 +769,217 @@
             <span class="format__icon" aria-hidden="true"><svg><use href="#i-book"/></svg></span>
             <span class="format__num">01</span>
             <h3>Лекции</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Рассказываем об&nbsp;операх из&nbsp;репертуара МАМТ простым языком: сюжет, музыка, история постановки и&nbsp;на&nbsp;что обратить внимание в&nbsp;зале.</p>
+            <p>Одна встреча&nbsp;— одна тема: история создания спектакля, основы жанра, устройство оперного голоса. Простым языком и&nbsp;с&nbsp;музыкальными фрагментами.</p>
           </article>
           <article class="card format format--accent reveal">
             <span class="format__icon" aria-hidden="true"><svg><use href="#i-mic"/></svg></span>
             <span class="format__num">02</span>
             <h3>Встречи с&nbsp;артистами</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Солисты, хористы и&nbsp;музыканты театра рассказывают о&nbsp;профессии, ролях и&nbsp;о&nbsp;том, что происходит с&nbsp;человеком на&nbsp;сцене.</p>
+            <p>Приглашаем артистов МАМТ к&nbsp;беседе со&nbsp;зрителями: о&nbsp;профессии, ролях и&nbsp;о&nbsp;том, что происходит с&nbsp;человеком на&nbsp;сцене.</p>
           </article>
           <article class="card format reveal">
             <span class="format__icon" aria-hidden="true"><svg><use href="#i-curtain"/></svg></span>
             <span class="format__num">03</span>
             <h3>Разговоры за&nbsp;кулисами</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Заглядываем туда, куда зрителя обычно не&nbsp;пускают: цеха, репетиции, гримёрки&nbsp;— и&nbsp;люди, без которых спектакль не&nbsp;случится.</p>
+            <p>Рассказываем о&nbsp;работе закулисных цехов&nbsp;— о&nbsp;людях, без которых спектакль не&nbsp;случится, хотя из&nbsp;зала их&nbsp;не&nbsp;видно.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ПУТЬ К ОПЕРЕ -->
-    <section class="path" aria-labelledby="path-title">
+    <!-- ЗНАКОМО? -->
+    <section class="section section--tight" aria-labelledby="gap-title">
       <div class="wrap">
         <div class="section__head section__head--center reveal">
           <p class="eyebrow">Знакомо?</p>
-          <h2 id="path-title">Хочется в&nbsp;оперу, <br>но&nbsp;<span class="script">страшно</span> не&nbsp;понять</h2>
+          <h2 id="gap-title">Интерес есть, а&nbsp;доступной <br>и&nbsp;<span class="script">интересной</span> информации нет</h2>
         </div>
-        <div class="path__circle reveal">
-          <div class="rings rings--ink" aria-hidden="true">
-            <i style="width:100%;height:100%"></i>
+
+        <div class="gap__grid">
+          <div class="card gap__card gap__card--before reveal">
+            <p class="eyebrow">Как обычно бывает</p>
+            <h3>Хочется в&nbsp;оперу, но…</h3>
+            <ul class="gap__list">
+              <li><span class="gap__mark" aria-hidden="true">?</span>Непонятно, с&nbsp;какого спектакля начать и&nbsp;что в&nbsp;нём слушать</li>
+              <li><span class="gap__mark" aria-hidden="true">?</span>Сюжет, контекст и&nbsp;история постановки разбросаны по&nbsp;разным источникам и&nbsp;написаны сложным языком</li>
+              <li><span class="gap__mark" aria-hidden="true">?</span>Кажется, что опера&nbsp;— искусство «не&nbsp;для&nbsp;меня»</li>
+              <li><span class="gap__mark" aria-hidden="true">?</span>Не&nbsp;у&nbsp;кого спросить, как всё устроено изнутри</li>
+            </ul>
           </div>
-          <div class="path__ring" aria-hidden="true"></div>
-          <ol style="list-style:none;margin:0;padding:0" aria-label="Путь к опере">
-            <li class="pill path__step" style="left:50%;top:14%">интерес</li>
-            <li class="pill path__step" style="left:81%;top:32%">лекция</li>
-            <li class="pill path__step" style="left:81%;top:68%">вопрос артисту</li>
-            <li class="pill path__step" style="left:50%;top:86%">закулисье</li>
-            <li class="pill path__step" style="left:19%;top:68%">спектакль</li>
-            <li class="pill path__step" style="left:19%;top:32%">снова в&nbsp;театр</li>
-          </ol>
-          <div class="path__center" aria-hidden="true"><div>путь<br>к опере<small>проходим вместе</small></div></div>
+
+          <div class="gap__arrow" aria-hidden="true">→</div>
+
+          <div class="card gap__card gap__card--after reveal">
+            <p class="eyebrow">Как проходит вечер в&nbsp;«Оперитиве»</p>
+            <h3>Разбираемся вместе</h3>
+            <ol class="gap__list">
+              <li><span class="gap__mark">1</span><div><b>Одна тема за&nbsp;вечер</b><span>От&nbsp;истории спектакля до&nbsp;устройства оперного голоса</span></div></li>
+              <li><span class="gap__mark">2</span><div><b>Слушаем и&nbsp;обсуждаем</b><span>Фрагменты постановок&nbsp;— с&nbsp;объяснением, на&nbsp;что обратить внимание</span></div></li>
+              <li><span class="gap__mark">3</span><div><b>Беседа с&nbsp;артистами МАМТ</b><span>Можно задать любой вопрос&nbsp;— из&nbsp;первых уст</span></div></li>
+              <li><span class="gap__mark">4</span><div><b>Розыгрыш билетов</b><span>Десять пригласительных в&nbsp;театр от&nbsp;МАМТ</span></div></li>
+            </ol>
+          </div>
         </div>
-        <p class="path__note lead reveal">Не&nbsp;нужно ничего знать заранее. Мы&nbsp;проведём от&nbsp;первого любопытства до&nbsp;первого спектакля&nbsp;— и&nbsp;дальше.</p>
+      </div>
+    </section>
+
+    <!-- КТО МЫ -->
+    <section class="section" id="team">
+      <div class="wrap">
+        <div class="team__grid">
+          <div class="team__photos reveal">
+            <svg class="deco" aria-hidden="true"><use href="#i-spark"/></svg>
+            <!-- Фото из презентации. Подпишите, кто есть кто, если нужно -->
+            <figure><img src="assets/team-1.jpg" alt="Основательница «Оперитива»" width="354" height="407" loading="lazy"></figure>
+            <figure><img src="assets/team-2.jpg" alt="Основательница «Оперитива»" width="760" height="508" loading="lazy" style="object-position:42% center"></figure>
+          </div>
+
+          <div class="team__text reveal">
+            <p class="eyebrow">Кто мы</p>
+            <h2>Признание <span class="script">в&nbsp;любви</span> к&nbsp;опере</h2>
+            <div style="height:28px"></div>
+            <p>«Оперитив» придуман и&nbsp;ведётся Сашей и&nbsp;Соней, студентками мастерской Музыкального театра имени Станиславского и&nbsp;Немировича-Данченко в&nbsp;ГИТИСе.</p>
+            <p>Мастерская учит нас театральному делу изнутри самого театра, и&nbsp;клуб вырос из&nbsp;этой учёбы как её&nbsp;естественное продолжение. Каждую встречу мы&nbsp;готовим сами, от&nbsp;выбора темы до&nbsp;последнего музыкального фрагмента, и&nbsp;всякий раз убеждаемся, что опера способна захватить человека, который ещё вчера полагал её&nbsp;искусством не&nbsp;для&nbsp;себя. Ради этого узнавания мы&nbsp;и&nbsp;работаем.</p>
+            <div class="roles">
+              <div class="role"><b>Александра Сашко</b><span>продюсер проекта</span></div>
+              <div class="role"><b>София Чеснокова</b><span>продюсер проекта, модератор встреч</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card curator reveal">
+          <div class="rings" aria-hidden="true">
+            <i style="width:560px;height:560px;left:95%;top:10%"></i>
+            <i style="width:820px;height:820px;left:95%;top:10%"></i>
+          </div>
+          <div class="curator__photo">
+            <img src="assets/curator.jpg" alt="Андрей Александрович Борисов" width="480" height="720" loading="lazy">
+          </div>
+          <div>
+            <p class="eyebrow">Куратор проекта</p>
+            <h3>Андрей Александрович Борисов</h3>
+            <p>Наставником и&nbsp;куратором проекта стал директор МАМТ. Его участие открывает клубу двери к&nbsp;артистам и&nbsp;цехам театра.</p>
+            <p class="small">Генеральный директор Московского академического Музыкального театра имени К.С.&nbsp;Станиславского и&nbsp;Вл.И.&nbsp;Немировича-Данченко, секретарь Союза театральных деятелей, член Совета по&nbsp;культуре и&nbsp;искусству при&nbsp;Президенте Российской Федерации.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- БЛИЖАЙШИЕ ВСТРЕЧИ -->
-    <section class="section" id="events">
+    <section class="section section--tight" id="events">
       <div class="wrap">
         <div class="section__head reveal">
           <p class="eyebrow">Афиша</p>
           <h2>Ближайшие <span class="script">встречи</span></h2>
-          <p class="lead">Даты и&nbsp;темы обновляем перед каждым сезоном. Количество мест ограничено&nbsp;— записывайтесь заранее.</p>
+          <p class="lead">Встречи проходят на&nbsp;разных площадках Москвы&nbsp;— место всегда указано в&nbsp;анонсе. Вход по&nbsp;билетам.</p>
         </div>
 
         <div class="events__list">
-          <!-- ЗАГЛУШКА: встреча 1 — заменить дату, тему, описание и ссылку -->
-          <article class="event event--light reveal">
+          <!-- Встреча 1 — реальная -->
+          <article class="event event--wine reveal">
+            <svg class="event__deco" aria-hidden="true"><use href="#i-spark"/></svg>
+            <span class="event__badge">Ближайшая</span>
             <div class="event__top">
-              <div class="event__date"><b>00</b><span>декабря<br>19:00</span></div>
-              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>лекция</span>
+              <div class="event__date"><b>06</b><span>декабря<br>18:00</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>лекция · мастер-класс</span>
             </div>
-            <h3>Опера <span class="script">с нуля</span></h3>
-            <p>Как слушать оперу впервые и&nbsp;не&nbsp;заскучать: короткий путеводитель по&nbsp;жанру с&nbsp;живыми музыкальными примерами.</p>
+            <h3>Азбука <span class="script">оперы</span></h3>
+            <p>Разбираемся в&nbsp;основах жанра: что такое опера, как она устроена и&nbsp;как её&nbsp;слушать, чтобы получать удовольствие с&nbsp;первой ноты.</p>
+            <div class="event__extra">
+              <svg aria-hidden="true"><use href="#i-hanger"/></svg>
+              <div><b>Мастер-класс от&nbsp;стилиста</b>«Как одеться в&nbsp;оперу»</div>
+            </div>
             <ul>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [зал / фойе]</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1,5 часа</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[вход свободный по регистрации]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>Пространство Si19</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>начало в&nbsp;18:00</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>вход по&nbsp;билетам</li>
             </ul>
-            <a class="btn btn--blue btn--block" href="#">Записаться</a>
+            <!-- ЗАГЛУШКА: если есть отдельная ссылка на покупку билетов — вставьте её в href -->
+            <a class="btn btn--block" href="https://t.me/operitiv" target="_blank" rel="noopener">Билеты и&nbsp;подробности</a>
           </article>
 
           <!-- ЗАГЛУШКА: встреча 2 -->
-          <article class="event event--blue reveal">
-            <svg class="event__deco" aria-hidden="true"><use href="#i-star"/></svg>
+          <article class="event event--ph reveal">
             <div class="event__top">
-              <div class="event__date"><b>00</b><span>декабря<br>19:00</span></div>
-              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>встреча с&nbsp;артистом</span>
+              <div class="event__date"><b>00</b><span>[месяц]<br>[время]</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>[формат]</span>
             </div>
-            <h3>Голос <span class="script">изнутри</span></h3>
-            <p>[Имя солиста]&nbsp;— о&nbsp;первой роли, страхе сцены и&nbsp;о&nbsp;том, как готовится партия.</p>
+            <h3>[Тема встречи]</h3>
+            <p>[Короткое описание встречи: о&nbsp;чём будем говорить и&nbsp;кто придёт в&nbsp;гости.]</p>
             <ul>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [зал / фойе]</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1,5 часа</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[вход свободный по регистрации]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Площадка]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Время начала]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Условия входа]</li>
             </ul>
-            <a class="btn btn--block" href="#">Записаться</a>
+            <a class="btn btn--blue btn--block" href="#">Подробнее</a>
           </article>
 
           <!-- ЗАГЛУШКА: встреча 3 -->
-          <article class="event event--wine reveal">
-            <svg class="event__deco" aria-hidden="true"><use href="#i-spark"/></svg>
+          <article class="event event--ph reveal">
             <div class="event__top">
-              <div class="event__date"><b>00</b><span>января<br>19:00</span></div>
-              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>за кулисами</span>
+              <div class="event__date"><b>00</b><span>[месяц]<br>[время]</span></div>
+              <span class="pill"><svg aria-hidden="true"><use href="#i-spark"/></svg>[формат]</span>
             </div>
-            <h3>Как рождается <span class="script">спектакль</span></h3>
-            <p>Экскурсия-разговор: от&nbsp;эскиза декорации до&nbsp;первого звонка. Знакомимся с&nbsp;теми, кого не&nbsp;видно из&nbsp;зала.</p>
+            <h3>[Тема встречи]</h3>
+            <p>[Короткое описание встречи: о&nbsp;чём будем говорить и&nbsp;кто придёт в&nbsp;гости.]</p>
             <ul>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>МАМТ, [место сбора]</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>около 1 часа</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[количество мест ограничено]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Площадка]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Время начала]</li>
+              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Условия входа]</li>
             </ul>
-            <a class="btn btn--block" href="#">Записаться</a>
+            <a class="btn btn--blue btn--block" href="#">Подробнее</a>
           </article>
         </div>
 
         <div class="card notice reveal">
           <svg aria-hidden="true"><use href="#i-spark"/></svg>
-          <p>Хотите узнавать о&nbsp;встречах первыми?<span>Анонсы, регистрация и&nbsp;фото с&nbsp;прошедших встреч&nbsp;— в&nbsp;нашем телеграм-канале.</span></p>
-          <a class="btn btn--blue" href="#contacts">Подписаться</a>
+          <p>Хотите узнавать о&nbsp;встречах первыми?<span>Анонсы, билеты и&nbsp;фото с&nbsp;прошедших встреч&nbsp;— в&nbsp;нашем телеграм-канале @operitiv.</span></p>
+          <a class="btn btn--blue" href="https://t.me/operitiv" target="_blank" rel="noopener">Подписаться</a>
         </div>
       </div>
     </section>
 
+    <!-- ФОТО С ПРОШЕДШИХ ВСТРЕЧ -->
+    <section class="section section--tight" id="photos">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow">Как это было</p>
+          <h2>Фото с&nbsp;<span class="script">прошедших</span> встреч</h2>
+          <p class="lead">Нажмите на&nbsp;фото, чтобы открыть его крупно.</p>
+        </div>
+
+        <!--
+          КАК ДОБАВИТЬ ФОТО:
+          1) положите файл в папку assets/gallery/ (например, 02.jpg);
+          2) замените один из блоков-заглушек <div class="gallery__item gallery__ph">…</div> на:
+             <button class="gallery__item" type="button" data-full="assets/gallery/02.jpg" data-caption="Подпись">
+               <img src="assets/gallery/02.jpg" alt="Описание фото" loading="lazy">
+             </button>
+          Классы gallery__item--wide (широкое) и gallery__item--tall (высокое) задают размер плитки.
+        -->
+        <div class="gallery reveal">
+          <button class="gallery__item gallery__item--wide gallery__item--tall" type="button" data-full="assets/gallery/01.jpg" data-caption="Зрители на встрече «Оперитива»">
+            <img src="assets/gallery/01.jpg" alt="Зрители в зале на встрече клуба" width="640" height="427" loading="lazy">
+            <figcaption><span class="pill">[Подпись: название встречи, дата]</span></figcaption>
+          </button>
+          <div class="gallery__item gallery__ph"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+          <div class="gallery__item gallery__ph gallery__item--tall"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+          <div class="gallery__item gallery__ph"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+          <div class="gallery__item gallery__ph"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+          <div class="gallery__item gallery__ph gallery__item--wide"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+          <div class="gallery__item gallery__ph"><div><svg aria-hidden="true"><use href="#i-camera"/></svg>Фото скоро</div></div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Просмотр фото">
+      <button type="button" aria-label="Закрыть">×</button>
+      <img src="" alt="">
+      <p></p>
+    </dialog>
+
     <!-- КАК ПОПАСТЬ -->
-    <section class="section" id="how" style="padding-top:24px">
+    <section class="section section--tight" id="how">
       <div class="wrap">
         <div class="section__head reveal">
           <p class="eyebrow">Как попасть</p>
@@ -803,18 +989,16 @@
         <div class="steps">
           <article class="card step reveal">
             <h3>Выберите встречу</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Смотрите афишу выше или&nbsp;анонсы в&nbsp;телеграм-канале&nbsp;— там появляются новые даты.</p>
+            <p>Смотрите афишу выше или&nbsp;анонсы в&nbsp;телеграм-канале @operitiv&nbsp;— там появляются новые даты и&nbsp;темы.</p>
           </article>
           <article class="card step reveal">
-            <h3>Зарегистрируйтесь</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Нажмите «Записаться» и&nbsp;заполните короткую форму. [Заглушка: где и&nbsp;как приходит подтверждение.]</p>
+            <h3>Купите билет</h3>
+            <!-- ЗАГЛУШКА: уточнить, где покупать билеты -->
+            <p>Вход на&nbsp;встречи по&nbsp;билетам. [Заглушка: где и&nbsp;как купить билет.]</p>
           </article>
           <article class="card step reveal">
-            <h3>Приходите в&nbsp;МАМТ</h3>
-            <!-- ЗАГЛУШКА -->
-            <p>Приходите за&nbsp;15 минут до&nbsp;начала. [Заглушка: нужен ли&nbsp;паспорт, какой вход, кто встречает.]</p>
+            <h3>Приходите на&nbsp;площадку</h3>
+            <p>Адрес указан в&nbsp;анонсе каждой встречи. Приходите за&nbsp;15&nbsp;минут до&nbsp;начала, чтобы спокойно устроиться.</p>
           </article>
         </div>
 
@@ -825,34 +1009,68 @@
               <i style="width:760px;height:760px;left:90%;top:20%"></i>
             </div>
             <p class="eyebrow">Где проходят встречи</p>
-            <h3>Музыкальный театр <br>Станиславского и&nbsp;<span class="nowrap">Немировича-Данченко</span></h3>
-            <ul>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>Москва, ул.&nbsp;Большая Дмитровка, 17</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>м.&nbsp;Чеховская, Пушкинская, Тверская</li>
-              <li><svg aria-hidden="true"><use href="#i-spark"/></svg>[Заглушка: вход / подъезд, ориентир]</li>
-            </ul>
-            <a class="btn" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D1%8F%20%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%BE%D0%B2%D0%BA%D0%B0%2C%2017" target="_blank" rel="noopener">Открыть на карте</a>
+            <h3>В&nbsp;разных пространствах Москвы</h3>
+            <p>Мы&nbsp;встречаемся в&nbsp;МАМТ и&nbsp;на&nbsp;площадках-партнёрах: опера должна звучать там, где её&nbsp;услышат те, кто ещё не&nbsp;открыл её&nbsp;для&nbsp;себя.</p>
+            <div class="venue__next">
+              <span>Ближайшая встреча · 6&nbsp;декабря, 18:00</span>
+              <b>Si19</b>
+              <!-- ЗАГЛУШКА: адрес площадки -->
+              <span>[Адрес площадки Si19]</span>
+            </div>
+            <!-- ЗАГЛУШКА: при необходимости замените ссылку на точную точку на карте -->
+            <a class="btn" href="https://yandex.ru/maps/?text=Si19%20%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0" target="_blank" rel="noopener">Открыть на карте</a>
           </div>
 
           <div class="card faq reveal">
             <h3>Частые вопросы</h3>
-            <!-- ЗАГЛУШКА: ответы уточнить -->
             <details>
               <summary>Сколько стоит участие?</summary>
-              <p>[Заглушка: бесплатно по&nbsp;регистрации / стоимость билета.]</p>
+              <!-- ЗАГЛУШКА -->
+              <p>Вход по&nbsp;билетам. [Заглушка: стоимость и&nbsp;где купить.]</p>
             </details>
             <details>
               <summary>Нужно ли разбираться в&nbsp;опере?</summary>
-              <p>Совсем нет. Встречи рассчитаны на&nbsp;тех, кто приходит впервые, — и&nbsp;на&nbsp;тех, кто хочет узнать больше.</p>
+              <p>Совсем нет. Встречи рассчитаны на&nbsp;тех, кто приходит впервые, и&nbsp;на&nbsp;тех, кто хочет узнать больше.</p>
+            </details>
+            <details>
+              <summary>Что за&nbsp;розыгрыш билетов?</summary>
+              <p>В&nbsp;конце вечера мы&nbsp;разыгрываем среди гостей десять пригласительных билетов, предоставленных театром.</p>
             </details>
             <details>
               <summary>Есть ли возрастные ограничения?</summary>
+              <!-- ЗАГЛУШКА -->
               <p>[Заглушка: например, 12+.]</p>
             </details>
-            <details>
-              <summary>Можно ли прийти без регистрации?</summary>
-              <p>[Заглушка: правила входа при наличии свободных мест.]</p>
-            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СОТРУДНИЧЕСТВО -->
+    <section class="section section--tight" id="partners">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow">Сотрудничество</p>
+          <h2>Ищем <span class="script">единомышленников</span></h2>
+        </div>
+        <div class="partners__grid">
+          <div class="card partners__text reveal">
+            <p>Нам важно, чтобы разговор об&nbsp;опере не&nbsp;замыкался в&nbsp;стенах театрального фойе, а&nbsp;звучал там, где его услышат те, кто ещё не&nbsp;открыл для&nbsp;себя этот прекрасный театральный жанр.</p>
+            <p>Клуб ищет единомышленников среди пространств, готовых к&nbsp;совместной работе, и&nbsp;приглашает их&nbsp;стать участниками и&nbsp;соорганизаторами встреч со&nbsp;зрителями.</p>
+            <p>Мы&nbsp;открыты и&nbsp;к&nbsp;другим формам сотрудничества и&nbsp;с&nbsp;готовностью поддержим любое предложение, исходящее от&nbsp;самой площадки.</p>
+          </div>
+          <div class="card partners__hello reveal">
+            <h3>Будем рады <span class="script">знакомству!</span></h3>
+            <p>Мы&nbsp;охотно знакомимся и&nbsp;обсуждаем идеи на&nbsp;любой стадии. Расскажем о&nbsp;клубе, покажем программу ближайших встреч и&nbsp;ответим на&nbsp;все вопросы.</p>
+            <div class="partners__person">
+              <b>Александра Сашко</b>
+              продюсер проекта<br>
+              <a href="https://t.me/sasha_sashko" target="_blank" rel="noopener">@sasha_sashko</a> · <a href="tel:+79162890631">8&nbsp;916&nbsp;289-06-31</a>
+            </div>
+            <div class="partners__actions">
+              <a class="btn btn--white" href="https://t.me/sasha_sashko" target="_blank" rel="noopener">Написать</a>
+              <a class="btn btn--line" href="tel:+79162890631">Позвонить</a>
+            </div>
           </div>
         </div>
       </div>
@@ -869,7 +1087,7 @@
       <div class="wrap">
         <div class="finale__inner reveal">
           <h2>Ищем путь к&nbsp;опере <span class="script">вместе со&nbsp;зрителем</span></h2>
-          <p>Приходите на&nbsp;первую встречу&nbsp;— дальше будет проще, интереснее и&nbsp;громче.</p>
+          <p>Приходите на&nbsp;«Азбуку оперы» 6&nbsp;декабря&nbsp;— дальше будет проще, интереснее и&nbsp;громче.</p>
           <a class="btn btn--blue" href="#events" style="min-width:260px">Выбрать встречу</a>
         </div>
       </div>
@@ -881,31 +1099,31 @@
         <div class="contacts__panel reveal">
           <p class="eyebrow">Контакты</p>
           <h2>Давайте <span class="script">дружить</span></h2>
-          <p class="lead">Пишите по&nbsp;любым вопросам: о&nbsp;встречах, сотрудничестве и&nbsp;участии в&nbsp;проекте.</p>
+          <p class="lead">Пишите по&nbsp;любым вопросам: о&nbsp;встречах, билетах, сотрудничестве и&nbsp;участии в&nbsp;проекте.</p>
 
-          <!-- ЗАГЛУШКИ: заменить ссылки (href) и подписи на настоящие -->
           <div class="contacts__grid">
-            <a class="contact" href="#" target="_blank" rel="noopener">
+            <a class="contact" href="https://t.me/operitiv" target="_blank" rel="noopener">
               <span class="contact__label">Telegram</span>
               <span class="contact__value">@operitiv</span>
-              <span class="contact__hint">анонсы и регистрация</span>
+              <span class="contact__hint">анонсы и билеты</span>
             </a>
-            <a class="contact" href="#" target="_blank" rel="noopener">
-              <span class="contact__label">ВКонтакте</span>
-              <span class="contact__value">vk.com/operitiv</span>
-              <span class="contact__hint">фото и новости</span>
+            <a class="contact" href="https://www.instagram.com/_operitiv_/" target="_blank" rel="noopener">
+              <span class="contact__label">Instagram*</span>
+              <span class="contact__value">_operitiv_</span>
+              <span class="contact__hint">фото и истории</span>
             </a>
-            <a class="contact" href="mailto:hello@example.com">
-              <span class="contact__label">Почта</span>
-              <span class="contact__value">hello@example.com</span>
-              <span class="contact__hint">для вопросов и партнёров</span>
-            </a>
-            <div class="contact">
+            <a class="contact" href="https://t.me/sasha_sashko" target="_blank" rel="noopener">
               <span class="contact__label">Координатор</span>
-              <span class="contact__value">[Имя Фамилия]</span>
-              <span class="contact__hint">[телефон или&nbsp;ник]</span>
-            </div>
+              <span class="contact__value">Александра Сашко</span>
+              <span class="contact__hint">@sasha_sashko в Telegram</span>
+            </a>
+            <a class="contact" href="tel:+79162890631">
+              <span class="contact__label">Телефон</span>
+              <span class="contact__value">8&nbsp;916&nbsp;289-06-31</span>
+              <span class="contact__hint">Александра Сашко</span>
+            </a>
           </div>
+          <p class="contacts__note">* Instagram принадлежит компании Meta, деятельность которой признана экстремистской и&nbsp;запрещена в&nbsp;России.</p>
         </div>
       </div>
     </section>
@@ -915,7 +1133,8 @@
   <footer class="footer">
     <div class="wrap footer__row">
       <a class="logo" href="#hero"><svg aria-hidden="true"><use href="#i-spark"/></svg>Оперитив</a>
-      <span>Оперный проект студентов ГИТИС при МАМТ</span>
+      <span>Оперный клуб МАМТ · проект студенток ГИТИС</span>
+      <a href="#partners">Сотрудничество</a>
       <span>© <span id="year">2026</span></span>
     </div>
   </footer>
@@ -936,6 +1155,23 @@
       top.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       document.addEventListener('click', function (e) { if (!top.contains(e.target)) setOpen(false); });
+    })();
+
+    // Галерея: просмотр фото крупно
+    (function () {
+      var box = document.getElementById('lightbox');
+      if (!box || typeof box.showModal !== 'function') return;
+      var img = box.querySelector('img'), cap = box.querySelector('p');
+      document.querySelectorAll('.gallery__item[data-full]').forEach(function (item) {
+        item.addEventListener('click', function () {
+          img.src = item.getAttribute('data-full');
+          img.alt = (item.querySelector('img') || {}).alt || '';
+          cap.textContent = item.getAttribute('data-caption') || '';
+          box.showModal();
+        });
+      });
+      box.querySelector('button').addEventListener('click', function () { box.close(); });
+      box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
     })();
 
     // Плавное появление блоков
